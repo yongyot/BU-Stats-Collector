@@ -1,0 +1,10 @@
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe.config
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.pdb
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.pdb
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe.config
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.exe
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.pdb
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.pdb

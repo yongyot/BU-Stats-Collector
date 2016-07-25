@@ -1,0 +1,18 @@
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe.config
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.pdb
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.csprojResolveAssemblyReference.cache
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\StatsDataOptimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.pdb
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe.config
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.pdb
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.pdb
+E:\BU-Antivirus3.0\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.csprojResolveAssemblyReference.cache
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe.config
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.exe
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.pdb
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.exe
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Debug\StatsDataOptimizer.pdb
+F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Debug\StatsDataOptimizer.csprojResolveAssemblyReference.cache
