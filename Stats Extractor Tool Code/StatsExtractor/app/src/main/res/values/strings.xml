@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BU Stats Collector</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="defaultinterval">1</string>
+    <string name="actionupload">Upload File</string>
+    <string name="actionallowaccess">Allow App Access</string>
+    <string name="tip"><b>Tip:</b></string>
+    <string name="action_resetFile">Reset File</string>
+    <string name="title_activity_test">Test</string>
+</resources>
