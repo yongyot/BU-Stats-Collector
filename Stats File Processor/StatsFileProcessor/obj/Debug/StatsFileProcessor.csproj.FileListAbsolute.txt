@@ -1,0 +1,10 @@
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\bin\Debug\StatsFileProcessor.exe.config
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\bin\Debug\StatsFileProcessor.exe
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\bin\Debug\StatsFileProcessor.pdb
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\obj\Debug\StatsFileProcessor.csprojResolveAssemblyReference.cache
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\obj\Debug\StatsFileProcessor.exe
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\obj\Debug\StatsFileProcessor.pdb
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\bin\Debug\StatsFileProcessor.exe.manifest
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\bin\Debug\StatsFileProcessor.application
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\obj\Debug\StatsFileProcessor.exe.manifest
+E:\BU-Antivirus3.0\StatsFileProcessor\StatsFileProcessor\obj\Debug\StatsFileProcessor.application
