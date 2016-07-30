@@ -272,9 +272,16 @@ public class BackgroundIntentService extends Service {
 
                         isExist = file.exists();   //make sure file does not exist.
 
+                        Log.d("bu-stats","Upload Size:"+Settings.UploadSize);
+                        Log.d("bu-stats","isUploading:"+FileUploader.isUploading);
+                        Log.d("bu-stats","IS_WIFI_AVAILABLE:"+Settings.IS_WIFI_AVAILABLE);
+                        Log.d("bu-stats","isExist:"+isExist);
+                        Log.d("bu-stats","IsGenerating Hash Code: "+HashGen.isGenerating);
+
                         //if hash file is uploaded and does not exist and wifi is available and hash generation process is not working and uploading of stats file is not working and current file size has surpass the threshold then upload it.
                         if (StatsFileManager.getFileSize(context) >= Settings.UploadSize && FileUploader.isUploading == false && Settings.IS_WIFI_AVAILABLE && isExist == false && HashGen.isGenerating == false) //if hash file exist, info is not uploaded yet. So wait for this file to upload before uploading stats.
                         {
+                            Log.d("bu-stats","Uploading File.");
                             FileUploader fileUploader = new FileUploader(context);
                             fileUploader.execute();
                         }
@@ -524,10 +531,21 @@ public class BackgroundIntentService extends Service {
     }
 
     public int compare(Date d1, Date d2) {
-        if (d1.getYear() != d2.getYear())
-            return d1.getYear() - d2.getYear();
-        if (d1.getMonth() != d2.getMonth())
-            return d1.getMonth() - d2.getMonth();
-        return d1.getDate() - d2.getDate();
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(d1);
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar1.setTime(d2);
+
+
+        if (calendar1.YEAR != calendar2.YEAR)
+            return calendar1.YEAR - calendar2.YEAR;
+
+        if (calendar1.MONTH != calendar2.MONTH)
+            return calendar1.MONTH - calendar2.MONTH;
+
+        return calendar1.DATE - calendar2.DATE;
+
     }
 }

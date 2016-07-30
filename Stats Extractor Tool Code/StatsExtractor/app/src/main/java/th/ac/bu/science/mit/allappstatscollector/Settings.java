@@ -39,7 +39,7 @@ public class Settings
 
     //change these settings for interval and upload size.
    // static String defaultInterval="3";
-    public static int UploadSize=2048; // 2 MB (Unit: bytes)
+    public static int UploadSize=50; // 2 MB (Unit: bytes)
 
     public static String getHashFilePath()
     {
