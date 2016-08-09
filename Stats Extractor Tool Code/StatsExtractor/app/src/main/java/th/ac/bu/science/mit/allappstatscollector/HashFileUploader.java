@@ -31,10 +31,6 @@ public class HashFileUploader extends AsyncTask<String, Void, String>
 
     synchronized public int uploadFile(String sourceFileUri) {
 
-
-
-        //String upLoadServerUri =  "http://192.168.1.106//hash.aspx";
-        //String upLoadServerUri =  "http://10.109.68.7//default.aspx?id="+Settings.getOutputFileName();
         String upLoadServerUri =  "http://mobile-monitoring.bu.ac.th//hash.aspx";
 
 

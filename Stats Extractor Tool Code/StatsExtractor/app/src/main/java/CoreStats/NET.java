@@ -36,8 +36,6 @@ public class NET {
     public String BG_DOWN_WiFi;
     public String FG_DOWN_WiFi;
 
-    public int NetworkType;
-
     public boolean error=false;
 
     /**/
@@ -131,12 +129,6 @@ public class NET {
         }
     }
 
-  /*/  public String getString()
-    {
-        String data=BG_UP_DATA+"\t"+BG_DOWN_DATA +"\t"+ BG_UP_WiFi+"\t"+BG_DOWN_WiFi +"\t"+FG_UP_DATA+"\t"+FG_DOWN_DATA+"\t"+FG_UP_WiFi+"\t"+FG_DOWN_WiFi;
-        return data;
-    }*/
-
     public static String getWifiInterfaceName()
     {
         try {
@@ -148,70 +140,6 @@ public class NET {
         }
         return null;
     }
-
-  /*  public static String getWifiInterfaceName(final Context context)
-    {
-        // Get WiFi interface's MAC address as a BigInteger.
-        String result = null;
-
-
-        if(android.os.Build.VERSION.SDK_INT >=23) {
-
-            try {
-                List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
-                for (NetworkInterface nif : all) {
-                    if (!nif.getName().equalsIgnoreCase("wlan0")) continue;
-
-                    byte[] macBytes = nif.getHardwareAddress();
-                    if (macBytes == null) {
-                        return null;
-                    }
-                        Log.d(Settings.TAG,"Socket : "+nif.getName());
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.d(Settings.TAG,"Unable to retrieve wifi interface name. Details: "+ex.toString());
-            }
-            return null;
-        }
-
-
-        else
-        {
-
-            BigInteger wifiMac = new BigInteger(NET.getMacAddress(context).replace(":", ""), 16);
-
-
-            try {
-                List<NetworkInterface> networkInterfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-                for (NetworkInterface currentInterface : networkInterfaces) {
-                    byte[] hardwareAddress = currentInterface.getHardwareAddress();
-                    if (hardwareAddress != null) {
-                        BigInteger currentMac = new BigInteger(hardwareAddress);
-
-                        if (currentMac.equals(wifiMac)) {
-                            result = currentInterface.getName();
-                            break;
-                        }
-                    }
-                }
-                if (result != null)
-                    Log.d(Settings.TAG, result);
-                else
-                    Log.d(Settings.TAG, "Could not retrieve wifi socket");
-
-            } catch (SocketException ex) {
-
-                Log.e(Settings.TAG, "Can't get wifi interface name. Socket excpetion: ");
-                Notify.showNotification(context, "Couldn't get network interface name.");
-            }
-        }
-        return result;
-    }*/
-
-
-
     public static boolean isWifiAvailable(Context context)
     {
     ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
