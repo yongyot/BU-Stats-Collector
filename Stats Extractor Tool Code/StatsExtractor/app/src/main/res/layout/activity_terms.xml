@@ -1,74 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_terms"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:scrollbars="none"
-    tools:context="th.ac.bu.science.mit.allappstatscollector.Terms">
+    android:background="@android:color/white">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Terms of Service"
+        android:id="@+id/textTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="87dp">
-
-        </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_weight="0.53"
+        android:background="@drawable/border"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginBottom="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Terms of Service"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
+            android:text="@string/term_of_service"
+            android:id="@+id/text_scroll" />
+    </ScrollView>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="159dp"
-            android:id="@+id/scrollView"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="0.53">
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accept_term"
+        android:id="@+id/checkbox_is_accept"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:checked="false"
+        android:nestedScrollingEnabled="false"
+        android:onClick="ToggleAccept"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/term_of_service"
-                android:id="@+id/text_scroll" />
-        </ScrollView>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/accept_term"
-            android:id="@+id/checkbox_is_accept"
-            android:layout_gravity="left"
-            android:layout_marginLeft="30dp"
-            android:checked="false"
-            android:nestedScrollingEnabled="false"
-            android:onClick="ToggleAccept" />
-
-        <Button
-            android:id="@+id/button_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/button_start"
-            android:onClick="StartMonitoring"
-            android:background="@android:color/holo_purple"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:layout_marginTop="20dp"
-            android:enabled="false" />
-
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_start"
+        android:onClick="StartMonitoring"
+        android:background="@android:color/holo_purple"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:enabled="false"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
 
 </RelativeLayout>
