@@ -268,4 +268,9 @@ public class MainActivity extends ActionBarActivity
         mHandler.removeCallbacks(null);
         super.onDestroy();
     }
+
+    public void onClickShowGUI(View view) {
+        Intent intent = new Intent(this, Terms.class);
+        startActivity(intent);
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="th.ac.bu.science.mit.allappstatscollector" >
+    package="th.ac.bu.science.mit.allappstatscollector">
 
     <supports-screens
         android:anyDensity="true"
@@ -25,7 +25,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
         </intent-filter>
@@ -35,7 +35,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,15 +46,14 @@
         <receiver
             android:name=".StartOnBootReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".RestartServiceReceiver" >
+        <receiver android:name=".RestartServiceReceiver">
             <intent-filter>
-                <action android:name="YouWillNeverKillMe" >
-                </action>
+                <action android:name="YouWillNeverKillMe" />
             </intent-filter>
         </receiver>
 
@@ -64,12 +63,17 @@
             android:exported="true"
             android:stopWithTask="false" />
 
-        <receiver android:name=".WifiReceiver" >
+        <receiver android:name=".WifiReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".Terms" />
+        <activity android:name=".DashBoard" />
+        <activity android:name=".InitScan" />
+        <activity android:name=".AppList" />
+        <activity android:name=".AppInfo"></activity>
     </application>
 
 </manifest>

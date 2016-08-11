@@ -23,6 +23,16 @@
                 android:layout_above="@+id/InnerRelativeLayout"
                 android:layout_centerHorizontal="true" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Mockup GUI"
+                android:id="@+id/btnShowMockupGUI"
+                android:onClick="onClickShowGUI"
+                android:layout_above="@+id/btnUsageAccess"
+                android:layout_alignLeft="@+id/btnUsageAccess"
+                android:layout_alignStart="@+id/btnUsageAccess" />
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
