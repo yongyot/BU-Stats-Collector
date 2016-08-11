@@ -1,0 +1,2 @@
+The description of BU-Stats Collector
+This application collects network and CPU usage of every user-installed application. The main goal of designing this application is to collect data for analysis purpose.
