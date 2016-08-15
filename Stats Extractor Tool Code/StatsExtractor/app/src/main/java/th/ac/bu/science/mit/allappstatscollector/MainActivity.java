@@ -24,6 +24,9 @@ import android.widget.TextView;
 
 
 import java.net.NetworkInterface;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import CoreStats.NET;
 
@@ -32,7 +35,7 @@ public class MainActivity extends ActionBarActivity
 {
     static Context context;
     final Handler mHandler = new Handler();
-    TextView tvWarning, tvWarningText;
+    TextView tvWarning, tvWarningText, tvMacAddress;
     Button btnStart, btnUsage;
     Runnable runnable;
     int uiUpdateInterval=3;
@@ -58,11 +61,11 @@ public class MainActivity extends ActionBarActivity
         context=getApplicationContext();
         Settings.loadSettings(context);
 
-        btnStart=(Button) findViewById(R.id.btnStartExtracting);
-        btnUsage=(Button) findViewById(R.id.btnUsageAccess);
-        tvWarning=(TextView)findViewById(R.id.tvWarning);
-        tvWarningText=(TextView)findViewById(R.id.tvWarningText);
-
+        btnStart = (Button)findViewById(R.id.btnStartExtracting);
+        btnUsage = (Button)findViewById(R.id.btnUsageAccess);
+        tvWarning = (TextView)findViewById(R.id.tvWarning);
+        tvWarningText = (TextView)findViewById(R.id.tvWarningText);
+        tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
     }
 
     private BroadcastReceiver mMessageRecevier = new BroadcastReceiver() {
@@ -136,6 +139,8 @@ public class MainActivity extends ActionBarActivity
         {
             return;
         }
+
+        tvMacAddress.setText("Mac Address " + Settings.getMacAddress());
 
         try {
             if (NetworkInterface.getByName("rmnet0") == null) {
