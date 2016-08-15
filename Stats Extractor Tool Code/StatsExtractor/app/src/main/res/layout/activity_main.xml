@@ -124,7 +124,6 @@
                 android:layout_alignEnd="@+id/btnStartExtracting"
                 android:onClick="gotoUsageAccess" />
 
-
         </RelativeLayout>>
     </LinearLayout>
 </ScrollView>

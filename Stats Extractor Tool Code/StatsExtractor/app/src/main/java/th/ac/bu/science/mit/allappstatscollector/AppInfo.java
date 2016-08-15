@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.provider.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -149,5 +151,15 @@ public class AppInfo extends AppCompatActivity {
 
     public void ShowHelp(View view) {
 
+    }
+
+    public void OpenAppManagement(View view) {
+//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//        if (launchIntent != null) {
+
+//            startActivity(launchIntent);//null pointer check in case package name was not found
+//        }
+//        startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+        startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + packageName)));
     }
 }
