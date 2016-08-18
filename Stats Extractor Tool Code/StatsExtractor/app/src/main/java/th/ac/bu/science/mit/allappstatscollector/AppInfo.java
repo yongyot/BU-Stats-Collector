@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AppInfo extends AppCompatActivity {
+public class AppInfo extends GeneralActivity {
 
     String packageName;
     PackageManager packageManager = null;
@@ -26,6 +26,8 @@ public class AppInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info);
+
+        SetTitle("App List");
 
         try {
             Intent intent = getIntent();
@@ -91,9 +93,9 @@ public class AppInfo extends AppCompatActivity {
     }
 
     void ShowHeader() {
-        TextView textAppName = (TextView) findViewById(R.id.text_app_name);
-        TextView textPackageName = (TextView) findViewById(R.id.text_package_name);
-        ImageView iconView = (ImageView) findViewById(R.id.app_icon);
+        TextView textAppName = (TextView) findViewById(R.id.textAppName);
+        TextView textPackageName = (TextView) findViewById(R.id.textPackageName);
+        ImageView iconView = (ImageView) findViewById(R.id.appIcon);
 
         textAppName.setText(appInfo.loadLabel(packageManager));
         textPackageName.setText(packageName);
@@ -101,15 +103,15 @@ public class AppInfo extends AppCompatActivity {
     }
 
     void ShowInfo() {
-        TextView textVersion = (TextView) findViewById(R.id.text_version_name);
-        TextView textVersionCode = (TextView) findViewById(R.id.text_version_code);
+        TextView textVersion = (TextView) findViewById(R.id.textVersionName);
+        TextView textVersionCode = (TextView) findViewById(R.id.textVersionCode);
 
         textVersion.setText(packageInfo.versionName);
         textVersionCode.setText(((Integer) packageInfo.versionCode).toString());
     }
 
     void ShowPermission() {
-        ViewGroup permissionList = (ViewGroup) findViewById(R.id.permission_list);
+        ViewGroup permissionList = (ViewGroup) findViewById(R.id.listPermission);
 
         try {
             if (packageInfo.requestedPermissions != null) {

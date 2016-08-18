@@ -73,7 +73,9 @@
         <activity android:name=".DashBoard" />
         <activity android:name=".InitScan" />
         <activity android:name=".AppList" />
-        <activity android:name=".AppInfo"></activity>
+        <activity android:name=".AppInfo" />
+        <activity android:name=".SettingsScreen" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>
