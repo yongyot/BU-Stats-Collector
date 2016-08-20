@@ -1,117 +1,138 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="match_parent"
     android:layout_gravity="center_horizontal|bottom"
     android:measureWithLargestChild="false"
     android:longClickable="false"
-    android:paddingBottom="10dp"
     android:gravity="center_horizontal"
-    >
+    android:paddingBottom="5dp">
 
-    <FrameLayout
-        android:layout_width="70dp"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/menuHome">
+        android:id="@+id/menuHome"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView12"
+            android:layout_height="0dp"
+            android:id="@+id/imageHome"
             android:src="@drawable/icon_home"
-            android:onClick="BackHome"
             android:tint="#f2a354"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center_horizontal|top"
+            android:onClick="BackHome"
+            android:layout_weight="3.5"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:id="@+id/textView12"
+            android:layout_height="0dp"
+            android:text="@string/menu_home"
+            android:id="@+id/textMenuHome"
             android:layout_gravity="center_horizontal|bottom"
             android:textColor="#f2a354"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:gravity="center_horizontal" />
-    </FrameLayout>
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1" />
 
-    <FrameLayout
-        android:layout_width="70dp"
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/menuAppList">
+        android:id="@+id/menuAppList"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/imageView2"
             android:src="@drawable/icon_app"
             android:onClick="ShowAppList"
             android:tint="#f2a354"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center_horizontal|top"
+            android:layout_weight="3.5"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="App List"
+            android:layout_height="0dp"
+            android:text="@string/menu_app_list"
             android:id="@+id/textView8"
             android:layout_gravity="center_horizontal|bottom"
             android:textColor="#f2a354"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:gravity="center_horizontal" />
-    </FrameLayout>
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            />
 
-    <FrameLayout
-        android:layout_width="70dp"
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/menuSettings">
+        android:id="@+id/menuSettings"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/imageView3"
             android:src="@drawable/icon_settings"
             android:onClick="ShowSettings"
             android:tint="#f2a354"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center_horizontal|top"
+            android:layout_weight="3.5"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Settings"
+            android:layout_height="0dp"
+            android:text="@string/menu_settings"
             android:id="@+id/textView9"
             android:layout_gravity="center_horizontal|bottom"
             android:textColor="#f2a354"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:gravity="center_horizontal" />
-    </FrameLayout>
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            />
 
-    <FrameLayout
-        android:layout_width="70dp"
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/menuAbout">
+        android:id="@+id/menuAbout"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/imageView6"
             android:src="@drawable/icon_help"
             android:tint="#f2a354"
             android:layout_gravity="center_horizontal|top"
             android:onClick="ShowAbout"
-            android:nestedScrollingEnabled="false" />
+            android:layout_weight="3.5"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="About"
+            android:layout_height="0dp"
+            android:text="@string/menu_about"
             android:id="@+id/textView10"
             android:layout_gravity="center_horizontal|bottom"
             android:textColor="#f2a354"
-            android:textAlignment="center"
-            android:textSize="16dp"
-            android:gravity="center_horizontal" />
-    </FrameLayout>
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

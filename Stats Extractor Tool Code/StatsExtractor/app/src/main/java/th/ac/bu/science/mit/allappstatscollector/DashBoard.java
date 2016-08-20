@@ -32,7 +32,7 @@ public class DashBoard extends GeneralActivity {
         }
 
         TextView textTotalApp = (TextView) findViewById(R.id.textTotalApp);
-        textTotalApp.setText(((Integer) installList.size()).toString());
+        textTotalApp.setText(String.format("%s",installList.size()));
 
         View menu = (View) findViewById(R.id.menuHome);
         menu.setVisibility(View.GONE);

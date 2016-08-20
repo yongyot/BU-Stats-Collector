@@ -20,73 +20,56 @@
         android:background="@android:color/white"
         >
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/circle"
+            android:src="@drawable/circle_green"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/icon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Initialising"
-                android:id="@+id/textView2"
-                android:layout_alignTop="@+id/circle"
-                android:layout_centerHorizontal="true"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textStyle="bold"
-                android:textSize="@dimen/abc_dropdownitem_icon_width"
-                android:layout_gravity="center"
-                android:layout_marginBottom="80dp" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/circle3"
+            android:src="@drawable/circle_green"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/circle"
+            android:layout_alignStart="@+id/circle"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/icon" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/circle"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/circle_blue"
-                android:layout_gravity="center"
-                android:layout_marginBottom="80dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/init"
+            android:id="@+id/textView2"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textStyle="bold"
+            android:textSize="@dimen/abc_dropdownitem_icon_width"
+            android:layout_gravity="center"
+            android:layout_alignTop="@+id/circle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/circle2"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/circle_blue"
-                android:layout_gravity="center"
-                android:layout_marginBottom="80dp" />
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:id="@+id/circle3"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/circle_blue"
-                android:layout_gravity="center"
-                android:layout_marginBottom="80dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/init_analyze"
-                android:id="@+id/textView7"
-                android:layout_alignTop="@+id/circle"
-                android:layout_centerHorizontal="true"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="80dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textSize="22dp"
-                android:textAlignment="center" />
-
-        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/init_analyze"
+            android:id="@+id/textView7"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="55dp"
+            android:textSize="22sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

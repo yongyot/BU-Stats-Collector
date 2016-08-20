@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Terms of Service"
+            android:text="@string/tos"
             android:id="@+id/textTitle"
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"
@@ -24,7 +24,7 @@
             android:layout_marginTop="30dp"
             android:textColor="#f2a354"
             android:textStyle="bold"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -32,7 +32,6 @@
             android:id="@+id/scrollView"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_weight="0.53"
             android:background="@drawable/border"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -55,7 +54,6 @@
             android:layout_gravity="left"
             android:layout_marginLeft="30dp"
             android:checked="false"
-            android:nestedScrollingEnabled="false"
             android:onClick="ToggleAccept"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="100dp" />
@@ -75,7 +73,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
 
     </RelativeLayout>
