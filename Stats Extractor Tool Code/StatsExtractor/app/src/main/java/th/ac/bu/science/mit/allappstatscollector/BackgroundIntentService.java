@@ -36,6 +36,7 @@ import java.util.Set;
 import CoreStats.NET;
 import CoreStats.Stats;
 import CoreStats.StepDownExtraction;
+import Utils.SharePrefs;
 
 /**
  * Created by Komal on 2/4/2016.
@@ -59,46 +60,6 @@ public class BackgroundIntentService extends Service {
     boolean forceStop=false;
     int networkErrorCount=0;
     boolean retry=false;
-
-
-    /*public BackgroundIntentService()
-    {
-        super("Extractor Thread");
-        context=this;
-    }
-
-    @Override
-    protected void onHandleIntent(Intent intent)
-    {
-
-    }*/
-    /*Code for step down
-    BroadcastReceiver mybroadcast = new BroadcastReceiver() {
-
-        //When Event is published, onReceive method is called
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // TODO Auto-generated method stub
-           // Log.i("[BroadcastReceiver]", "MyReceiver");
-
-            if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                //Log.i("[BroadcastReceiver]", "Screen ON");
-
-                if(Settings.interval>=12)
-                {
-                    handler.removeCallbacks(runnable);
-                  //  Settings.interval=Settings.minInterval;
-                    runnable.run();
-                }
-
-                StepDownExtraction.count = 0;
-                //Settings.interval = Settings.minInterval;
-            } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-               // Log.i("[BroadcastReceiver]", "Screen OFF");
-            }
-        }
-    };
-    Code for step down ends here*/
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -279,11 +240,31 @@ public class BackgroundIntentService extends Service {
                         Log.d("bu-stats","IsGenerating Hash Code: "+HashGen.isGenerating);
 
                         //if hash file is uploaded and does not exist and wifi is available and hash generation process is not working and uploading of stats file is not working and current file size has surpass the threshold then upload it.
-                        if (StatsFileManager.getFileSize(context) >= Settings.UploadSize && FileUploader.isUploading == false && Settings.IS_WIFI_AVAILABLE && isExist == false && HashGen.isGenerating == false) //if hash file exist, info is not uploaded yet. So wait for this file to upload before uploading stats.
-                        {
-                            Log.d("bu-stats","Uploading File.");
-                            FileUploader fileUploader = new FileUploader(context);
-                            fileUploader.execute();
+                        if (StatsFileManager.getFileSize(context) >= Settings.UploadSize
+                                && isExist == false && HashGen.isGenerating == false){
+
+                            if (Settings.IS_WIFI_AVAILABLE){
+
+                                Log.d("bu-stats","Uploading File.");
+                                FileUploader fileUploader = new FileUploader(context);
+                                fileUploader.execute();
+
+                            } else {
+
+                                // check date before upload
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                                String currentDateString = dateFormat.format(new Date());
+                                String cacheDateString = SharePrefs.getPreferenceString(context, "current_date", "");
+
+                                if (!currentDateString.equals(cacheDateString)){
+
+                                    Log.d("bu-stats","Uploading File.");
+                                    FileUploader fileUploader = new FileUploader(context);
+                                    fileUploader.execute();
+                                }
+
+                                SharePrefs.setPreference(context, "current_date", currentDateString);
+                            }
                         }
 
                         //Log.d("test-test", "FileUploader.IsUploading = " + FileUploader.isUploading);
@@ -379,73 +360,7 @@ public class BackgroundIntentService extends Service {
                             }
                             //Log.d("stats-result", "Internal counter: " + internalCounter);
                     internalCounter++;
-/*
 
-
-                           //Step-down for changing interval begins here;.,..
-
-
-                            boolean isActive= StepDownExtraction.isDeviceActive(context);
-                            boolean checkNetworkStepdown=false;
-                            if(!isActive && stepDownStats!=null)
-                            {
-                                StepDownExtraction tempStepDown =new StepDownExtraction(stepDownStats);
-                                if(tempStepDown.cpuTotal >0)
-                                {
-                                    Settings.interval=Settings.minInterval;
-                                    StepDownExtraction.count=0;
-                                    Log.d(Settings.TAG,"CPU: "+ tempStepDown.cpuTotal);
-                                }
-                                else
-                                {
-                                    StepDownExtraction.count++;
-                                    checkNetworkStepdown=true;
-                                }
-                            }
-                            Log.d(Settings.TAG,"Count: "+StepDownExtraction.count + "  \t Threshold: "+StepDownExtraction.threshold);
-
-
-                            if (!isActive && diff != null && StepDownExtraction.count >= Settings.NetInterval)  //initialize if screen is off or not.)  //device sleeping.  Start step down approach
-                            {
-                                StepDownExtraction stepDownExtraction = new StepDownExtraction(diff);
-                                int totalCpu = stepDownExtraction.cpuTotal;
-                                int networkUsage=stepDownExtraction.totalNetwork;
-                                Log.d(Settings.TAG,"Netowork : "+  networkUsage);
-                                if (totalCpu <= 0 && networkUsage<=0)  //if CPU and memory is not in use then increase the interval;
-                                {
-                                    Log.d(Settings.TAG,"Going into step down mode");
-
-                                    StepDownExtraction.count++;
-                                    Log.d(Settings.TAG,"Count: "+StepDownExtraction.count);
-                                    Log.d(Settings.TAG,"threshold: "+StepDownExtraction.threshold);
-                                    if (true)  //cpu was 0 for n (threshold) times. increase the delay
-                                    {
-                                        Log.d(Settings.TAG,"Went to step down");
-
-                                        if ((Settings.interval * 2) <= Settings.maxInterval)
-                                            Settings.interval += Settings.interval;
-                                        else
-                                            Settings.interval = Settings.maxInterval; //set it to max
-                                    }
-                                }
-                                else
-                                {
-                                    Log.d(Settings.TAG, "both are not zero reseting counter");
-                                    Settings.interval = Settings.minInterval;
-                                    StepDownExtraction.count = 0;                             //reset the counter
-
-                                }
-                                Log.d(Settings.TAG,"Interval: "+Settings.interval);
-                                //Log.d("step-down", "Device sleeping. Interval: " + Settings.interval + " CPU: " + totalCpu);
-                            }
-                            else if(isActive)       //device is awake set default interval...
-                            {
-                                Log.d(Settings.TAG, "awake reseting counter");
-                                StepDownExtraction.count = 0;                             //reset the counter
-                                Settings.interval = Settings.minInterval;//set default interval
-                            }
-                            //step down ends here...
-*/
                         }
                         counter++;
                         handler.postDelayed(this, Settings.getInterval() * 1000);
