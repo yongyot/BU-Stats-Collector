@@ -25,6 +25,7 @@
     <string name="label_app_name">App Name</string>
     <string name="permissions">Permissions :</string>
     <string name="dashboard_safe">Your device is safe</string>
+    <string name="dashboard_suspicious"> Malware Suspicious</string>
     <string name="total_installed_app">Total installed app:</string>
     <string name="app_using_internet">App using internet:</string>
     <string name="tos">Terms of Service</string>

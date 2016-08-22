@@ -137,31 +137,7 @@ public class AppInfo extends GeneralActivity {
         }
     }
 
-    public void BackHome(View view) {
-        Intent intent = new Intent(this, DashBoard.class);
-        startActivity(intent);
-    }
-
-    public void ShowAppList(View view) {
-        Intent intent = new Intent(this, AppList.class);
-        startActivity(intent);
-    }
-
-    public void ShowSettings(View view) {
-
-    }
-
-    public void ShowHelp(View view) {
-
-    }
-
     public void OpenAppManagement(View view) {
-//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//        if (launchIntent != null) {
-
-//            startActivity(launchIntent);//null pointer check in case package name was not found
-//        }
-//        startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
         startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + packageName)));
     }
 }

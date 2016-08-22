@@ -17,12 +17,14 @@ public class AppEntityAdapter extends ArrayAdapter<ApplicationInfo> {
     List<ApplicationInfo> appsList = null;
     Context context;
     PackageManager packageManager;
+    int layoutResourceId;
 
-    public AppEntityAdapter(Context context, int textViewResourceId,
+    public AppEntityAdapter(Context context, int layoutResourceId,
                             List<ApplicationInfo> appsList) {
-        super(context, textViewResourceId, appsList);
+        super(context, layoutResourceId, appsList);
         this.context = context;
         this.appsList = appsList;
+        this.layoutResourceId = layoutResourceId;
         packageManager = context.getPackageManager();
     }
 
@@ -47,7 +49,7 @@ public class AppEntityAdapter extends ArrayAdapter<ApplicationInfo> {
         if (null == view) {
             LayoutInflater layoutInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.layout_app_entity, null);
+            view = layoutInflater.inflate(layoutResourceId, null);
         }
 
         ApplicationInfo applicationInfo = appsList.get(position);
