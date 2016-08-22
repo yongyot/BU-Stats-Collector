@@ -1,0 +1,14 @@
+
+    <scale xmlns:android="http://schemas.android.com/apk/res/android"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+
+        android:fromXScale="0.2"
+        android:toXScale="1.0"
+        android:fromYScale="0.2"
+        android:toYScale="1.0"
+        android:duration="700"
+        android:repeatCount="-1"
+        android:repeatMode="restart"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        />

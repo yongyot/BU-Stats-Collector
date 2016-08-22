@@ -30,13 +30,28 @@
                 android:id="@+id/textAppName"
                 android:layout_gravity="center_vertical"
                 android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/holo_red_dark" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="App information"
-                android:id="@+id/textAppInfo" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="App information"
+                    android:id="@+id/textAppInfo"
+                    android:textColor="@android:color/holo_red_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(Malware)"
+                    android:id="@+id/textSuspectType"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
