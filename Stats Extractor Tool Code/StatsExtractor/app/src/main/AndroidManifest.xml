@@ -31,7 +31,7 @@
         </intent-filter>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -69,13 +69,20 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Terms" />
-        <activity android:name=".DashBoard" />
-        <activity android:name=".InitScan" />
-        <activity android:name=".AppList" />
-        <activity android:name=".AppInfo" />
-        <activity android:name=".SettingsScreen" />
-        <activity android:name=".About" />
+        <activity android:name=".Activities.TermsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.DashBoardActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.InitScanActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.AppListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.AppInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.SettingsScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.AboutActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

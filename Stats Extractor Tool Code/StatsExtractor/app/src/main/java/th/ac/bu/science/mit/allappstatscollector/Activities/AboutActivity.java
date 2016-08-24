@@ -1,10 +1,13 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class About extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.BuildConfig;
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+class AboutActivity extends GeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
@@ -7,10 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.LinkProperties;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,11 +20,14 @@ import android.widget.TextView;
 
 
 import java.net.NetworkInterface;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
-import CoreStats.NET;
+import th.ac.bu.science.mit.allappstatscollector.BackgroundIntentService;
+import th.ac.bu.science.mit.allappstatscollector.HashGen;
+import th.ac.bu.science.mit.allappstatscollector.Notify;
+import th.ac.bu.science.mit.allappstatscollector.R;
+import th.ac.bu.science.mit.allappstatscollector.Settings;
+import th.ac.bu.science.mit.allappstatscollector.ShowMessage;
+import th.ac.bu.science.mit.allappstatscollector.StatsFileManager;
 
 
 public class MainActivity extends ActionBarActivity
@@ -275,7 +274,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onClickShowGUI(View view) {
-        Intent intent = new Intent(this, Terms.class);
+        Intent intent = new Intent(this, TermsActivity.class);
         startActivity(intent);
     }
 }

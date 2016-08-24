@@ -11,6 +11,8 @@ import android.os.Build;
 import android.os.Vibrator;
 import android.support.v7.app.NotificationCompat;
 
+import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
+
 /**
  * Created by Komal on 3/8/2016.
  */

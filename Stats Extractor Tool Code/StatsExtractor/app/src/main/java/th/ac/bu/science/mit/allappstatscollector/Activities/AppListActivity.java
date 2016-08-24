@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -11,7 +11,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppList extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.Adapters.AppEntityAdapter;
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+public class AppListActivity extends GeneralActivity {
 
     PackageManager packageManager = null;
     List<ApplicationInfo> appList = null;
@@ -74,7 +77,7 @@ public class AppList extends GeneralActivity {
 
                 ApplicationInfo applicationInfo = installList.get(position);
 
-                Intent intent = new Intent(AppList.this, AppInfo.class);
+                Intent intent = new Intent(AppListActivity.this, AppInfoActivity.class);
                 intent.putExtra("packageName", applicationInfo.packageName);
                 startActivity(intent);
             }
@@ -101,7 +104,7 @@ public class AppList extends GeneralActivity {
 
                 ApplicationInfo applicationInfo = installList.get(position);
 
-                Intent intent = new Intent(AppList.this, AppInfo.class);
+                Intent intent = new Intent(AppListActivity.this, AppInfoActivity.class);
                 intent.putExtra("packageName", applicationInfo.packageName);
                 startActivity(intent);
             }

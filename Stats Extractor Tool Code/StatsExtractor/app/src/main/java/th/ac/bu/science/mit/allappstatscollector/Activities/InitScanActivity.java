@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -7,7 +7,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class InitScan extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.Activities.DashBoardActivity;
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+public class InitScanActivity extends GeneralActivity {
 
 //    enum InitState {Idle, Initialising}
 //
@@ -33,7 +36,7 @@ public class InitScan extends GeneralActivity {
     Runnable FinishInitialise = new Runnable() {
         @Override
         public void run() {
-            Intent intent = new Intent(InitScan.this, DashBoard.class);
+            Intent intent = new Intent(InitScanActivity.this, DashBoardActivity.class);
             startActivity(intent);
         }
     };

@@ -1,28 +1,20 @@
 package th.ac.bu.science.mit.allappstatscollector;
 
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.app.TaskStackBuilder;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
-import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.text.method.DateTimeKeyListener;
 import android.util.Log;
 
 import java.io.File;
@@ -31,12 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
-import CoreStats.NET;
 import CoreStats.Stats;
-import CoreStats.StepDownExtraction;
-import Utils.SharePrefs;
+import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
 
 /**
  * Created by Komal on 2/4/2016.

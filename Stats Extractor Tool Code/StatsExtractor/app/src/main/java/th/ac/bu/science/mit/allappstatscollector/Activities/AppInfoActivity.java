@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -7,15 +7,15 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.provider.*;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AppInfo extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+public class AppInfoActivity extends GeneralActivity {
 
     String packageName;
     PackageManager packageManager = null;

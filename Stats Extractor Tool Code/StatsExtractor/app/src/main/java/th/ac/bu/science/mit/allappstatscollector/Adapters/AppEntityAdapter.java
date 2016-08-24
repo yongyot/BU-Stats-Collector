@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Adapters;
 
 
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import th.ac.bu.science.mit.allappstatscollector.R;
 
 public class AppEntityAdapter extends ArrayAdapter<ApplicationInfo> {
     List<ApplicationInfo> appsList = null;

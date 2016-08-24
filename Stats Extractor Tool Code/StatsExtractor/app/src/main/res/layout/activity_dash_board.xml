@@ -6,7 +6,7 @@
     android:fillViewport="true"
     android:background="@android:color/white"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="th.ac.bu.science.mit.allappstatscollector.DashBoard"
+    tools:context=".Activities.DashBoard"
     >
 
     <include layout="@layout/layout_title_bar"

@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-public class Terms extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+class TermsActivity extends GeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,7 @@ public class Terms extends GeneralActivity {
     }
 
     public void StartMonitoring(View view) {
-        Intent intent = new Intent(this, InitScan.class);
+        Intent intent = new Intent(this, InitScanActivity.class);
         startActivity(intent);
     }
 }

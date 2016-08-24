@@ -1,9 +1,11 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import th.ac.bu.science.mit.allappstatscollector.R;
 
 public class GeneralActivity extends AppCompatActivity {
 
@@ -13,22 +15,22 @@ public class GeneralActivity extends AppCompatActivity {
     }
 
     public void BackHome(View view) {
-        Intent intent = new Intent(this, DashBoard.class);
+        Intent intent = new Intent(this, DashBoardActivity.class);
         startActivity(intent);
     }
 
     public void ShowAppList(View view) {
-        Intent intent = new Intent(this, AppList.class);
+        Intent intent = new Intent(this, AppListActivity.class);
         startActivity(intent);
     }
 
     public void ShowSettings(View view) {
-        Intent intent = new Intent(this, SettingsScreen.class);
+        Intent intent = new Intent(this, SettingsScreenActivity.class);
         startActivity(intent);
     }
 
     public void ShowAbout(View view) {
-        Intent intent = new Intent(this, About.class);
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 }

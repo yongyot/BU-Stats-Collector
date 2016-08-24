@@ -1,4 +1,4 @@
-package Utils;
+package th.ac.bu.science.mit.allappstatscollector.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

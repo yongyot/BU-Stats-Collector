@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -12,7 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashBoard extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+class DashBoardActivity extends GeneralActivity {
 
     boolean isSuspicious = false;
 
@@ -62,7 +64,7 @@ public class DashBoard extends GeneralActivity {
     }
 
     void ShowMockupMalware (View view) {
-        Intent intent = new Intent(this, AppList.class);
+        Intent intent = new Intent(this, AppListActivity.class);
         boolean isSuspicious = this.isSuspicious;
         intent.putExtra("is_suspicious", isSuspicious);
         startActivity(intent);

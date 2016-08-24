@@ -1,9 +1,11 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.os.Bundle;
 import android.view.View;
 
-public class SettingsScreen extends GeneralActivity {
+import th.ac.bu.science.mit.allappstatscollector.R;
+
+class SettingsScreenActivity extends GeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
