@@ -6,9 +6,6 @@ import android.preference.PreferenceManager;
 
 import java.util.Set;
 
-/**
- * Created by nutron on 9/18/14 AD.
- */
 public class SharePrefs {
     public static void setPreference(Context context, String key, String value) {
         SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(context);

@@ -243,13 +243,13 @@ public class BackgroundIntentService extends Service {
                         if (StatsFileManager.getFileSize(context) >= Settings.UploadSize
                                 && isExist == false && HashGen.isGenerating == false){
 
-                            if (Settings.IS_WIFI_AVAILABLE){
+                            /*if (Settings.IS_WIFI_AVAILABLE){*/
 
                                 Log.d("bu-stats","Uploading File.");
                                 FileUploader fileUploader = new FileUploader(context);
                                 fileUploader.execute();
 
-                            } else {
+                            /*} else {
 
                                 // check date before upload
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -264,7 +264,7 @@ public class BackgroundIntentService extends Service {
                                 }
 
                                 SharePrefs.setPreference(context, "current_date", currentDateString);
-                            }
+                            }*/
                         }
 
                         //Log.d("test-test", "FileUploader.IsUploading = " + FileUploader.isUploading);
