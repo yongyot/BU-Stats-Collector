@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.*;
 
+import th.ac.bu.science.mit.allappstatscollector.Models.AppsInfo;
+
 /**
  * Created by Komal on 1/13/2016.
  */

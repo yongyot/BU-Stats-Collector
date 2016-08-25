@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector;
+package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
@@ -7,10 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.LinkProperties;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,14 +21,20 @@ import android.widget.TextView;
 
 import java.net.NetworkInterface;
 
-import CoreStats.NET;
+import th.ac.bu.science.mit.allappstatscollector.BackgroundIntentService;
+import th.ac.bu.science.mit.allappstatscollector.HashGen;
+import th.ac.bu.science.mit.allappstatscollector.Notify;
+import th.ac.bu.science.mit.allappstatscollector.R;
+import th.ac.bu.science.mit.allappstatscollector.Settings;
+import th.ac.bu.science.mit.allappstatscollector.ShowMessage;
+import th.ac.bu.science.mit.allappstatscollector.StatsFileManager;
 
 
 public class MainActivity extends ActionBarActivity
 {
     static Context context;
     final Handler mHandler = new Handler();
-    TextView tvWarning, tvWarningText;
+    TextView tvWarning, tvWarningText, tvMacAddress;
     Button btnStart, btnUsage;
     Runnable runnable;
     int uiUpdateInterval=3;
@@ -58,11 +60,11 @@ public class MainActivity extends ActionBarActivity
         context=getApplicationContext();
         Settings.loadSettings(context);
 
-        btnStart=(Button) findViewById(R.id.btnStartExtracting);
-        btnUsage=(Button) findViewById(R.id.btnUsageAccess);
-        tvWarning=(TextView)findViewById(R.id.tvWarning);
-        tvWarningText=(TextView)findViewById(R.id.tvWarningText);
-
+        btnStart = (Button)findViewById(R.id.btnStartExtracting);
+        btnUsage = (Button)findViewById(R.id.btnUsageAccess);
+        tvWarning = (TextView)findViewById(R.id.tvWarning);
+        tvWarningText = (TextView)findViewById(R.id.tvWarningText);
+        tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
     }
 
     private BroadcastReceiver mMessageRecevier = new BroadcastReceiver() {
@@ -136,6 +138,8 @@ public class MainActivity extends ActionBarActivity
         {
             return;
         }
+
+        tvMacAddress.setText("Mac Address " + Settings.getMacAddress());
 
         try {
             if (NetworkInterface.getByName("rmnet0") == null) {
@@ -267,5 +271,10 @@ public class MainActivity extends ActionBarActivity
     {
         mHandler.removeCallbacks(null);
         super.onDestroy();
+    }
+
+    public void onClickShowGUI(View view) {
+        Intent intent = new Intent(this, TermsActivity.class);
+        startActivity(intent);
     }
 }
