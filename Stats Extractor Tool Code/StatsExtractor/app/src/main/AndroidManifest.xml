@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="th.ac.bu.science.mit.allappstatscollector">
+    package="th.ac.bu.science.mit.allappstatscollector" >
 
     <supports-screens
         android:anyDensity="true"
@@ -25,17 +25,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
         </intent-filter>
 
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,14 +46,15 @@
         <receiver
             android:name=".StartOnBootReceiver"
             android:enabled="true"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".RestartServiceReceiver">
+        <receiver android:name=".RestartServiceReceiver" >
             <intent-filter>
-                <action android:name="YouWillNeverKillMe" />
+                <action android:name="YouWillNeverKillMe" >
+                </action>
             </intent-filter>
         </receiver>
 
@@ -63,26 +64,12 @@
             android:exported="true"
             android:stopWithTask="false" />
 
-        <receiver android:name=".WifiReceiver">
+        <receiver android:name=".WifiReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activities.TermsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.DashBoardActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.InitScanActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AppListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AppInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.SettingsScreenActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AboutActivity"
-            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
