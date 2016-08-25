@@ -1,4 +1,4 @@
-package th.ac.bu.science.mit.allappstatscollector.Models;
+package th.ac.bu.science.mit.allappstatscollector;
 
 /**
  * Created by Komal on 1/13/2016.

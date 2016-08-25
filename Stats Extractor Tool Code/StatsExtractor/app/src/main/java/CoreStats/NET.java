@@ -7,7 +7,6 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
-import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -152,4 +151,5 @@ public class NET {
         return false;
 
     }
+
 }

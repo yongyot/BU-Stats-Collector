@@ -15,8 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
-
 /**
  * Created by Komal on 11/2/2015.
  */
@@ -183,7 +181,7 @@ public class FileUploader extends AsyncTask<String, Void, String>
 
     private  void showMessage(String msg)
     {
-        Message message= MainActivity.handlerFileUpload.obtainMessage();
+        Message message=MainActivity.handlerFileUpload.obtainMessage();
         Bundle bundle=new Bundle();
         bundle.putString("message",msg);
         message.setData(bundle);
