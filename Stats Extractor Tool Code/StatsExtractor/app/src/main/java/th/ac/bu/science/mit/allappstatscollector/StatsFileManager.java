@@ -32,7 +32,6 @@ public class StatsFileManager {
         writeToFile(data, true);
     }
 
-
     public void createNewFile() {
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss:SSS", Locale.ENGLISH);
@@ -43,10 +42,26 @@ public class StatsFileManager {
         String metaInfo = "File Name: " + Settings.getOutputFileName(context) + "\r\n" +
                 "Extraction Started: " + createtime + "\r\n";
         String formatStr = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s";
-        String title = String.format(formatStr, "LogTime", "UID", "PackageName", "isMainProcess", "isInteracting", "Status",
-                "CPU%", "VSS", "RSS", "THREADS", "Priority", "Status",
-                "BG_UP_DATA", "BG_DOWN_DATA", "FG_UP_DATA", "FG_DOWN_DATA",
-                "BG_UP_WiFi", "BG_DOWN_WiFi", "FG_UP_WiFi", "FG_DOWN_WiFi");
+        String title = String.format(formatStr, "LogTime"
+                , "UID"
+                , "PackageName"
+                , "isMainProcess"
+                , "isInteracting"
+                , "Status"
+                , "CPU%"
+                , "VSS"
+                , "RSS"
+                , "THREADS"
+                , "Priority"
+                , "Status"
+                , "BG_UP_DATA"
+                , "BG_DOWN_DATA"
+                , "FG_UP_DATA"
+                , "FG_DOWN_DATA"
+                , "BG_UP_WiFi"
+                , "BG_DOWN_WiFi"
+                , "FG_UP_WiFi"
+                , "FG_DOWN_WiFi");
 
         String line = "";
         for (int i = 0; i <= title.length() + 48; i++)

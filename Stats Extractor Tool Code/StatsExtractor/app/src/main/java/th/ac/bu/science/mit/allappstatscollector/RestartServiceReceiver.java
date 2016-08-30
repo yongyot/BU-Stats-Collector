@@ -17,8 +17,9 @@ public class RestartServiceReceiver  extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Log.d(Settings.TAG,"Notification Received");
-        if(!isMyServiceRunning(BackgroundIntentService.class,context))
+        if(!isMyServiceRunning(BackgroundIntentService.class,context)){
             context.startService(new Intent(context.getApplicationContext(), BackgroundIntentService.class));
+        }
 
     }
 
@@ -31,6 +32,5 @@ public class RestartServiceReceiver  extends BroadcastReceiver {
         }
         return false;
     }
-
 }
 

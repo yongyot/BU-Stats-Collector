@@ -3,8 +3,6 @@ package th.ac.bu.science.mit.allappstatscollector;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 
 import java.io.DataOutputStream;
@@ -14,13 +12,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
-
 /**
  * Created by Komal on 11/2/2015.
  */
-public class HashFileUploader extends AsyncTask<String, Void, String>
-{
+public class HashFileUploader extends AsyncTask<String, Void, String> {
    // ProgressDialog pd;
     Context context;
     public static boolean isUploading=false;
@@ -35,28 +30,23 @@ public class HashFileUploader extends AsyncTask<String, Void, String>
 
         String upLoadServerUri =  "http://mobile-monitoring.bu.ac.th//hash.aspx";
 
-
         int serverResponseCode = 0;
         String fileName = sourceFileUri;
 
-
-        HttpURLConnection conn = null;
-        DataOutputStream dos = null;
-        String lineEnd = "\r\n";
-        String twoHyphens = "--";
+        HttpURLConnection conn;
+        DataOutputStream dos;
         String boundary = "*****";
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
         File sourceFile = new File(sourceFileUri);
 
-        if (!sourceFile.isFile())
-        {
+        if (!sourceFile.isFile()) {
             Log.d("stats-results", "Error uploading file. Details:  Source File not exist :");
             return -1;
-        }
-        else
-        {
+
+        } else {
+
             try {
 
                 // open a URL connection to the Servlet
@@ -135,14 +125,11 @@ public class HashFileUploader extends AsyncTask<String, Void, String>
         if(serverCode==200)
         {File file=new File(Settings.getHashFilePath());
         file.delete();}
-
     }
 
     @Override
-    protected String doInBackground(String... params)
-    {
-        if(isInternetAvailable())
-        {
+    protected String doInBackground(String... params) {
+        if(isInternetAvailable()) {
             isUploading=true;
            // Log.d("stats-results","Internet Available: "+isInternetAvailable());
             //Log.d("stats-results", "Uploading file...");
@@ -152,53 +139,38 @@ public class HashFileUploader extends AsyncTask<String, Void, String>
 
 
             //Log.d("stats-hash", "Server Code from hashuploader: " + serverCode);
-            if(serverCode==200) {
+            if(serverCode == 200) {
 
             Log.d(Settings.TAG, "Hash File uploaded successfully.");
             File file=new File(Settings.getHashFilePath());
             file.delete();
-        }
-            else if(serverCode==404) {
 
+            } else if(serverCode==404) {
                 Log.d(Settings.TAG,"Can not connect to server. Hash file can not be uploaded");
-
-            }
-            else if(serverCode==-1)
+            } else if(serverCode==-1){
                 Log.d(Settings.TAG,"Hash file does not exist.");
-            else if(serverCode==504)
+            } else if(serverCode==504){
                 Log.d(Settings.TAG,"Gateway Timeout. Couldn't upload hash file");
-            else if(serverCode==0)
+            } else if(serverCode==0){
                 Log.d(Settings.TAG,"Can not reach to server with this network.");
-            else
-            Log.d(Settings.TAG, "Unhandled server code. Couldn't upload hash file" + serverCode);
-
-        }
-        else
-        {
+            } else {
+                Log.d(Settings.TAG, "Unhandled server code. Couldn't upload hash file" + serverCode);
+            }
+        }  else  {
             Log.d(Settings.TAG,"No internet access. Couldn't upload hash file");
         }
         isUploading=false;
         return null;
     }
 
-
-    private  void showMessage(String msg)
-    {
-        Message message= MainActivity.handlerFileUpload.obtainMessage();
-        Bundle bundle=new Bundle();
-        bundle.putString("message",msg);
-        message.setData(bundle);
-        MainActivity.handlerFileUpload.sendMessage(message);
-    }
-
-    public boolean isInternetAvailable()
-    {
+    public boolean isInternetAvailable() {
         final ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final android.net.NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         final android.net.NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if( wifi.isConnected() || mobile.isConnected())
+        if( wifi.isConnected() || mobile.isConnected()){
             return true;
-        else
-            return false;
+        }
+
+        return false;
     }
 }

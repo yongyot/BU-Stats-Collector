@@ -53,29 +53,17 @@ import th.ac.bu.science.mit.allappstatscollector.Settings;
 
  */
 
-public class NetStatsExtractor
-{
+public class NetStatsExtractor {
+
     public String DATA_INTERFACE;
     Context context;
-    public NetStatsExtractor(Context _context)
-    {
-        context=_context;
-        DATA_INTERFACE="rmnet0";
 
-        /*try       list out all the installed network interfaces on device
-        {
-            for(Enumeration<NetworkInterface> list = NetworkInterface.getNetworkInterfaces(); list.hasMoreElements();) {
-                NetworkInterface i = list.nextElement();
-            }
-        }
-        catch (Exception e){
-        }*/
-
+    public NetStatsExtractor(Context _context) {
+        context = _context;
+        DATA_INTERFACE = "rmnet0";
     }
 
-
-    public List<Stats> collectNetStats(List<Stats> appsList)
-    {
+    public List<Stats> collectNetStats(List<Stats> appsList) {
         //In this method we will go through each application we found in Top command and we will set the network data in appList.net for each application
         //Some applications can have multiple processes. So when there is a multiple process we will read the data for it just once.
 
@@ -85,38 +73,28 @@ public class NetStatsExtractor
             return null;
         }
 
-        for(int i=0;i<appsList.size();i++)
-        {
-            if(appsList.get(i).isMainProcess())
-            {
+        for(int i=0;i<appsList.size();i++) {
+            if(appsList.get(i).isMainProcess()) {
                 NET netStats = getNetStats(appsList.get(i).UID, unFilteredStats);
                 appsList.get(i).NetStats.CopyNet(netStats);
-            }
-            else
-            {
+            } else {
                 appsList.get(i).NetStats.setEmtpy();
             }
         }
         return appsList;
     }
 
-
-
-
-    public List<Stats> collectEmptyNetStats(List<Stats> appsList)
-    {
+    public List<Stats> collectEmptyNetStats(List<Stats> appsList) {
         //In this method we will go through each application we found in Top command and we will set the network data in appList.net for each application
         //Some applications can have multiple processes. So when there is a multiple process we will read the data for it just once.
 
-        for(int i=0;i<appsList.size();i++)
-        {
+        for(int i=0;i<appsList.size();i++) {
                 appsList.get(i).NetStats.setNegative();
         }
         return appsList;
     }
 
-    public NET getNetStats(String UID,String unFilteredStats)
-    {
+    public NET getNetStats(String UID,String unFilteredStats) {
 /*        final int CNET=4;
         final String DATA_BG="0";
         final String DATA_FG="1";*/
@@ -133,58 +111,51 @@ public class NetStatsExtractor
 
         String lines[] = unFilteredStats.split("\n");
 
-        try
-        {
-        for(int i=0;i<lines.length;i++) {
+        try {
+            for(int i=0;i<lines.length;i++) {
 
-            String dataBG[] = lines[i].trim().split("\\s+");
+                String dataBG[] = lines[i].trim().split("\\s+");
 
-            if (dataBG[APP_UID].equalsIgnoreCase(UID) && dataBG[TAG].equalsIgnoreCase("0x0"))            //this is the uid we are looking for. There will be two consecutive lines. First for background data and second for foreground data for same interface.
-            {
+                if (dataBG[APP_UID].equalsIgnoreCase(UID) && dataBG[TAG].equalsIgnoreCase("0x0")){  //this is the uid we are looking for. There will be two consecutive lines. First for background data and second for foreground data for same interface.
 
+                    String dataFG[] = lines[i + 1].trim().split("\\s+");    // We already read the first now read second one.
+                    i++;
+                    if (dataBG[INTERFACE].equalsIgnoreCase(Settings.WIFI_INTERFACE)){    //wifi background data for up and down is here
 
-                String dataFG[] = lines[i + 1].trim().split("\\s+");    // We already read the first now read second one.
-                i++;
-                if (dataBG[INTERFACE].equalsIgnoreCase(Settings.WIFI_INTERFACE))    //wifi background data for up and down is here
-                {
-                    //read for the wifi background and foreground here
+                        //read for the wifi background and foreground here
 
-                    netStats.BG_UP_WiFi = dataBG[TX_BYTES];
-                    netStats.BG_DOWN_WiFi = dataBG[RX_BYTES];
-                    netStats.FG_UP_WiFi = dataFG[TX_BYTES];
-                    netStats.FG_DOWN_WiFi = dataFG[RX_BYTES];
-                    wifiFound = true;
-                } else if (dataBG[INTERFACE].equalsIgnoreCase(DATA_INTERFACE))    //read for mobile background and foreground here
-                {
-                    netStats.BG_UP_DATA = dataBG[TX_BYTES];
-                    netStats.BG_DOWN_DATA = dataBG[RX_BYTES];
-                    netStats.FG_UP_DATA = dataFG[TX_BYTES];
-                    netStats.FG_DOWN_DATA = dataFG[RX_BYTES];
-                    dataFound = true;
+                        netStats.BG_UP_WiFi = dataBG[TX_BYTES];
+                        netStats.BG_DOWN_WiFi = dataBG[RX_BYTES];
+                        netStats.FG_UP_WiFi = dataFG[TX_BYTES];
+                        netStats.FG_DOWN_WiFi = dataFG[RX_BYTES];
+                        wifiFound = true;
+                    } else if (dataBG[INTERFACE].equalsIgnoreCase(DATA_INTERFACE)){    //read for mobile background and foreground here
+
+                        netStats.BG_UP_DATA = dataBG[TX_BYTES];
+                        netStats.BG_DOWN_DATA = dataBG[RX_BYTES];
+                        netStats.FG_UP_DATA = dataFG[TX_BYTES];
+                        netStats.FG_DOWN_DATA = dataFG[RX_BYTES];
+                        dataFound = true;
+                    }
+                }
+                if (wifiFound && dataFound) {      //both are done. break the loop.
+                    break;
                 }
             }
-            if (wifiFound && dataFound)      //both are done. break the loop.
-                break;
         }
-        }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             netStats.error=true;
             Log.d(Settings.TAG, "Might be malformed proc file from net stats extractor. Details: " + e.toString());
         }
 
-
-
         return netStats;
     }
 
-    private  String readProcFile()
-    {
+    private  String readProcFile() {
         String procFileName="/proc/net/xt_qtaguid/stats";
         StringBuffer fileData = new StringBuffer();
         BufferedReader bufferedReader=null;
-        try
-        {
+        try {
             bufferedReader = new BufferedReader(new FileReader(procFileName));
             String line;
             line = bufferedReader.readLine();                   //ignore header
@@ -193,34 +164,18 @@ public class NetStatsExtractor
             }
 
             bufferedReader.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.d(Settings.TAG, "Error reading proc file in NetStatsCollector. Details: " + e.toString());
             Notify.showNotification(context, "Couldn't read network file");
-            try
-            {
+            try {
                 if(bufferedReader!=null)
                     bufferedReader.close();
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
              Log.e(Settings.TAG,"Can not close buffer reader for proc file.");
             }
         }
+
         return fileData.toString();
-    }
-
-
-
-
-    public  byte[] macAddressToByteArray(String macString) {
-        String[] mac = macString.split("[:\\s-]");
-        byte[] macAddress = new byte[6];
-        for (int i = 0; i < mac.length; i++) {
-            macAddress[i] = Integer.decode("0x" + mac[i]).byteValue();
-        }
-        return macAddress;
     }
 }

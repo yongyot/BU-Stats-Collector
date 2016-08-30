@@ -27,42 +27,35 @@ public class HashGen {
 
     public volatile static boolean isGenerating=false;
 
-
-    private  void writeToFile(String data, boolean append)
-    {
+    private  void writeToFile(String data, boolean append) {
         data=Settings.getMacAddress()+"\n"+data;
 
         File rootPath= Environment.getExternalStorageDirectory();
         File statsDir;
         statsDir = new File(rootPath+"/BU-Stat-Collector/");
 
-        if(!statsDir.exists())
+        if(!statsDir.exists()){
             statsDir.mkdirs();
+        }
 
         try {
             File file = new File(Settings.getHashFilePath());
             FileOutputStream fos = new FileOutputStream(file, append);
             fos.write(data.getBytes());
             fos.close();
-        }
-        catch (Exception e)
-        {
+        }  catch (Exception e) {
             Log.d(Settings.TAG, "Unable to write hash info in file. Details:\n" + e.toString());
         }
     }
 
-
-
-    public void getAllAppInfo(Context context)
-    {
+    public void getAllAppInfo(Context context) {
         isGenerating=true;
         String data="";
 
         SimpleDateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss:SSS",Locale.ENGLISH);
         formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        final ArrayList<ApplicationInfo> apps = new ArrayList<ApplicationInfo>();
-        {
+        new ArrayList<>();{
             final List<ApplicationInfo> packs = context.getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
 
             for (ApplicationInfo appInfo : packs) {
@@ -83,13 +76,11 @@ public class HashGen {
     }
 
 
-    public AppsInfo getPackageInfo(String packageName,Context context)
-    {
+    public AppsInfo getPackageInfo(String packageName,Context context) {
         AppsInfo appInfo=new AppsInfo();
 
         PackageManager pm = context.getPackageManager();
-        try
-        {
+        try {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
             long millis=packageInfo.lastUpdateTime;
             appInfo.hash=getHash(packageInfo.applicationInfo.sourceDir);
@@ -99,19 +90,15 @@ public class HashGen {
             appInfo.versionCode=packageInfo.versionCode+"";
             return appInfo;
 
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.d(Settings.TAG,"Error occurred in getPackageInfo method. Details: "+ ex.toString());
         }
         return null;
     }
 
 
-    private  String getHash(String file)
-    {
-        try
-        {
+    private String getHash(String file) {
+        try {
             FileInputStream inputStream = new FileInputStream(file);
             MessageDigest digest = MessageDigest.getInstance("MD5");
 
@@ -125,9 +112,7 @@ public class HashGen {
             byte[] hashedBytes = digest.digest();
 
             return convertByteArrayToHexString(hashedBytes);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.d(Settings.TAG,"Error while generating hashcode. Details: "+ex.toString());
         }
         return null;
@@ -141,5 +126,4 @@ public class HashGen {
         }
         return stringBuffer.toString();
     }
-
 }

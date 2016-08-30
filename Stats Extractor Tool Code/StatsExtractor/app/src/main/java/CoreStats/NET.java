@@ -40,8 +40,7 @@ public class NET {
     public boolean error=false;
 
     /**/
-    public NET()
-    {
+    public NET() {
         BG_UP_DATA="0";
         FG_UP_DATA="0";
         BG_UP_WiFi="0";
@@ -88,8 +87,7 @@ public class NET {
     }
 
 
-    public static String getMacAddress(Context context)
-    {
+    public static String getMacAddress(Context context) {
         return getMacAddr(context);
     }
 
@@ -121,35 +119,29 @@ public class NET {
                 Notify.showNotification(context,"Error getting mac address.");
             }
             return null;
-        }
-        else
-        {
+        } else {
             WifiManager wifiManager = (WifiManager) context.getSystemService(context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             return wifiInfo.getMacAddress();
         }
     }
 
-    public static String getWifiInterfaceName()
-    {
+    public static String getWifiInterfaceName() {
         try {
             return NetworkInterface.getByName("wlan0")!=null? "wlan0": NetworkInterface.getByName("eth0")!=null ?  "eth1":NetworkInterface.getByName("eth1")!=null?"eth1": null;
-        }
-        catch(Exception ex)
-        {
+        } catch(Exception ex) {
             Log.d(Settings.TAG,"Can not get wifi network interface name.");
         }
         return null;
     }
-    public static boolean isWifiAvailable(Context context)
-    {
-    ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
-    if (mWifi.isConnected()) {
-        return true;
-    }
+    public static boolean isWifiAvailable(Context context) {
+        ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (mWifi.isConnected()) {
+            return true;
+        }
         return false;
-
     }
 }
