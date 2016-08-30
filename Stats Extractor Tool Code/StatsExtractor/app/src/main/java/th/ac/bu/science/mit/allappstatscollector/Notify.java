@@ -19,8 +19,7 @@ import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
 public class Notify {
 
     static int id=0;
-    public static void showNotification(Context context, String message)
-    {
+    public static void showNotification(Context context, String message) {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder notificationBuilder =new NotificationCompat.Builder(context);
         notificationBuilder.setContentTitle("Stats Collector - Info");

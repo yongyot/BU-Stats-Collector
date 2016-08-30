@@ -30,8 +30,8 @@
                 android:id="@+id/btnShowMockupGUI"
                 android:onClick="onClickShowGUI"
                 android:layout_above="@+id/btnUsageAccess"
-                android:layout_alignLeft="@+id/btnUsageAccess"
-                android:layout_alignStart="@+id/btnUsageAccess" />
+                android:layout_centerHorizontal="true"
+                />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Session: 0"
+                    android:text="Session:"
                     android:id="@+id/tvCounter"
                     android:layout_below="@+id/tvStartTime"
                     android:layout_alignParentLeft="true"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="File size :"
+                android:text="ID :"
                 android:id="@+id/tvMacAddress"
                 android:layout_below="@+id/tvFileSize"
                 android:layout_alignParentLeft="true"
@@ -130,9 +130,8 @@
                 android:text="Turn On User Access"
                 android:id="@+id/btnUsageAccess"
                 android:layout_above="@+id/btnStartExtracting"
-                android:layout_alignStart="@+id/btnStartExtracting"
-                android:layout_alignEnd="@+id/btnStartExtracting"
-                android:onClick="gotoUsageAccess" />
+                android:layout_centerHorizontal="true"
+                android:onClick="onClickTurnOnUserAccess" />
 
         </RelativeLayout>>
     </LinearLayout>

@@ -24,15 +24,14 @@ public class StepDownExtraction {
 
     public int totalNetwork=0;
 
-   public static boolean isDeviceActive(Context context)   //returns true if screen is on.
-    {
+   public static boolean isDeviceActive(Context context) {   //returns true if screen is on.
+
         PowerManager powerManager = (PowerManager) context.getSystemService(context.POWER_SERVICE);
         boolean result = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH && powerManager.isInteractive() || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT_WATCH && powerManager.isScreenOn();
         return result;
     }
 
-    public StepDownExtraction (List<Stats> stats)
-    {
+    public StepDownExtraction (List<Stats> stats) {
         int cpuUsage=0, memory=0,network=0;
         for(int i=0;i<stats.size();i++)
         {
@@ -53,14 +52,11 @@ public class StepDownExtraction {
 
             //Log.d(Settings.TAG, "BG DOWN " + BG_DOWN_DATA + " FG_UP_DATA : " + FG_UP_DATA+ " BG_UP_WiFi: " +BG_UP_WiFi +" FG_UP_WiFi: " + FG_UP_WiFi+  "BG_DOWN_DATA"+ BG_DOWN_DATA);
 
-            if(!(BG_DOWN_DATA.equals("-1") || BG_DOWN_DATA.equals("-")))
-            {
+            if(!(BG_DOWN_DATA.equals("-1") || BG_DOWN_DATA.equals("-"))) {
 
                   totalNetwork=  Integer.parseInt(BG_UP_DATA) + Integer.parseInt(FG_UP_DATA) + Integer.parseInt(BG_UP_WiFi) + Integer.parseInt(FG_UP_WiFi);
                   totalNetwork+=   Integer.parseInt(BG_DOWN_DATA)+ Integer.parseInt(FG_DOWN_DATA)+Integer.parseInt(BG_DOWN_WiFi)+Integer.parseInt(FG_DOWN_WiFi);
-            }
-            else
-            {
+            } else {
                 totalNetwork=0;
             }
 

@@ -17,10 +17,7 @@ import CoreStats.NET;
 public class WifiReceiver extends BroadcastReceiver
 {
     @Override
-    public void onReceive(Context context, Intent intent)
-    {
-//        Settings.IS_WIFI_AVAILABLE= NET.isWifiAvailable(context);
- //       Log.d(Settings.TAG,"Wifi : "+Settings.IS_WIFI_AVAILABLE);
+    public void onReceive(Context context, Intent intent) {
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
@@ -31,22 +28,5 @@ public class WifiReceiver extends BroadcastReceiver
             Settings.network_type=1;
         else
             Settings.network_type=0;
-
-       // Log.d("network_type", Settings.network_type +"--------------------------------------------------------******");
     }
 }
-
-
-/*
-
-
-public class NetworkChangeReceiver extends BroadcastReceiver
-{
-@Override
-public void onReceive(Context context, Intent intent)
-{
-
-}
-}
-
- */

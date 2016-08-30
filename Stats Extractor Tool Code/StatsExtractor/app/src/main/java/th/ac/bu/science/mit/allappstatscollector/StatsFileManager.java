@@ -32,7 +32,6 @@ public class StatsFileManager {
         writeToFile(data, true);
     }
 
-
     public void createNewFile() {
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss:SSS", Locale.ENGLISH);
@@ -40,13 +39,29 @@ public class StatsFileManager {
 
         String createtime = sdf.format(cal.getTime());
 
-        String metaInfo = "File Name: " + Settings.getOutputFileName(context) + "\r\n" +
+        String metaInfo = "File Name: " + Settings.getOutputFileName() + "\r\n" +
                 "Extraction Started: " + createtime + "\r\n";
         String formatStr = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s";
-        String title = String.format(formatStr, "LogTime", "UID", "PackageName", "isMainProcess", "isInteracting", "Status",
-                "CPU%", "VSS", "RSS", "THREADS", "Priority", "Status",
-                "BG_UP_DATA", "BG_DOWN_DATA", "FG_UP_DATA", "FG_DOWN_DATA",
-                "BG_UP_WiFi", "BG_DOWN_WiFi", "FG_UP_WiFi", "FG_DOWN_WiFi");
+        String title = String.format(formatStr, "LogTime"
+                , "UID"
+                , "PackageName"
+                , "isMainProcess"
+                , "isInteracting"
+                , "Status"
+                , "CPU%"
+                , "VSS"
+                , "RSS"
+                , "THREADS"
+                , "Priority"
+                , "Status"
+                , "BG_UP_DATA"
+                , "BG_DOWN_DATA"
+                , "FG_UP_DATA"
+                , "FG_DOWN_DATA"
+                , "BG_UP_WiFi"
+                , "BG_DOWN_WiFi"
+                , "FG_UP_WiFi"
+                , "FG_DOWN_WiFi");
 
         String line = "";
         for (int i = 0; i <= title.length() + 48; i++)
@@ -59,14 +74,13 @@ public class StatsFileManager {
     public static long getFileSize(Context context) {
         long size = 0;
         try {
-            File rootPath = Environment.getExternalStorageDirectory();
             File statsDir;
-            statsDir = new File(rootPath + "/BU-Stat-Collector/");
+            statsDir = new File(Settings.APPLICATION_PATH);
 
             if (!statsDir.exists())
                 statsDir.mkdirs();
 
-            File file = new File(statsDir, Settings.getOutputFileName(context));
+            File file = new File(statsDir, Settings.getOutputFileName());
 
             size = file.length() / 1024;
 
@@ -79,15 +93,14 @@ public class StatsFileManager {
 
     private synchronized void writeToFile(String data, boolean append) {
 
-        File rootPath = Environment.getExternalStorageDirectory();
         File statsDir;
-        statsDir = new File(rootPath + "/BU-Stat-Collector/");
+        statsDir = new File(Settings.APPLICATION_PATH);
 
         if (!statsDir.exists())
             statsDir.mkdirs();
 
         try {
-            File file = new File(statsDir, Settings.getOutputFileName(context));
+            File file = new File(statsDir, Settings.getOutputFileName());
             FileOutputStream fos = new FileOutputStream(file, append);
             fos.write(data.getBytes());
             fos.close();
@@ -100,12 +113,11 @@ public class StatsFileManager {
     public static boolean compressFile(Context cont) {
         boolean result = false;
         byte[] buffer = new byte[1024];
-        String outputFile = Settings.getOutputFileName(cont);
+        String outputFile = Settings.getOutputFileName();
         try {
 
-            File rootPath = Environment.getExternalStorageDirectory();
             File statsDir;
-            statsDir = new File(rootPath + "/BU-Stat-Collector/");
+            statsDir = new File(Settings.APPLICATION_PATH);
 
             FileOutputStream fos = new FileOutputStream(statsDir + "/" + outputFile + ".zip");
 

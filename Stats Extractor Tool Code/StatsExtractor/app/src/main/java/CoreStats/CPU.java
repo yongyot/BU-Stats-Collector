@@ -13,9 +13,4 @@ public class CPU {
     public String Status = "";
     //public String PCY="";
     public boolean success;
-
-    public CPU()
-    {
-
-    }
 }

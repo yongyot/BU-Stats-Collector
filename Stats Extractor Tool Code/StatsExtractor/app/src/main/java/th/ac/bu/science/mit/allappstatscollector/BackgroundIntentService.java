@@ -1,5 +1,6 @@
 package th.ac.bu.science.mit.allappstatscollector;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -45,10 +46,10 @@ public class BackgroundIntentService extends Service {
     int internalCounter = 0;
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date date;
-    boolean isForeground=false;
-    boolean forceStop=false;
-    int networkErrorCount=0;
-    boolean retry=false;
+    boolean isForeground = false;
+    boolean forceStop = false;
+    int networkErrorCount = 0;
+    boolean retry = false;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -59,7 +60,6 @@ public class BackgroundIntentService extends Service {
     public void onCreate() {
 
         super.onCreate();
-
 
         is_Service_Running = true;
         date = new Date();
@@ -77,17 +77,16 @@ public class BackgroundIntentService extends Service {
 
         Settings.loadSettings(context);
 
-        String path = Environment.getExternalStorageDirectory() + "/BU-Stat-Collector/" + Settings.getOutputFileName(context);
+        String path = Settings.APPLICATION_PATH + Settings.getOutputFileName();
         File file = new File(path);
         stop_request = false;
 
         if (!file.exists()) {
             new StatsFileManager(context).createNewFile();
         }
-
     }
 
-
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void updateNotification() {
         NotificationManager mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
@@ -121,8 +120,8 @@ public class BackgroundIntentService extends Service {
     }
 
 
-    private void startAsForeground()
-    {
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void startAsForeground() {
         NotificationManager mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
 
@@ -162,16 +161,15 @@ public class BackgroundIntentService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         startAsForeground();
-        networkErrorCount=0;
-        retry=true;
+        networkErrorCount = 0;
+        retry = true;
 
         currentDate = new Date();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         internalCounter = 0;
 
-        if (!isThreadRunning)       //thread is not running so start the thread
-        {
+        if (!isThreadRunning){       //thread is not running so start the thread
 
             counter = 0;
             Log.d(Settings.TAG, "Stats extraction process started.");
@@ -181,23 +179,19 @@ public class BackgroundIntentService extends Service {
 
                     @Override
                     public void run() {
-                        List<Stats> diff=null;
+                        List<Stats> diff;
                         try{
                             if(isForeground) {
 
-                                if(android.os.Build.VERSION.SDK_INT <=19)   //below lollipop we need to remove the notification by stop foreground and restart the notification
-                                {
+                                if(android.os.Build.VERSION.SDK_INT <= 19){   //below lollipop we need to remove the notification by stop foreground and restart the notification
                                     stopForeground(true);
                                     updateNotification();
-                                }
-                                else {
+                                } else {
                                     stopForeground(false);
                                 }
                                 isForeground=false;
                             }
-                        }
-                        catch(Exception ex)
-                        {
+                        } catch(Exception ex) {
                             Log.d(Settings.TAG,"Error occurred while stop foreground");
                         }
 
@@ -231,63 +225,32 @@ public class BackgroundIntentService extends Service {
                         //if hash file is uploaded and does not exist and wifi is available and hash generation process is not working and uploading of stats file is not working and current file size has surpass the threshold then upload it.
                         if (StatsFileManager.getFileSize(context) >= Settings.UploadSize
                                 && isExist == false && HashGen.isGenerating == false){
-
-                            /*if (Settings.IS_WIFI_AVAILABLE){*/
-
                                 Log.d("bu-stats","Uploading File.");
                                 FileUploader fileUploader = new FileUploader(context);
                                 fileUploader.execute();
-
-                            /*} else {
-
-                                // check date before upload
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                                String currentDateString = dateFormat.format(new Date());
-                                String cacheDateString = SharePrefs.getPreferenceString(context, "current_date", "");
-
-                                if (!currentDateString.equals(cacheDateString)){
-
-                                    Log.d("bu-stats","Uploading File.");
-                                    FileUploader fileUploader = new FileUploader(context);
-                                    fileUploader.execute();
-                                }
-
-                                SharePrefs.setPreference(context, "current_date", currentDateString);
-                            }*/
                         }
 
                         //Log.d("test-test", "FileUploader.IsUploading = " + FileUploader.isUploading);
-                        if (!FileUploader.isUploading)           //if file is not uploading. (file is not in use) then calculate the stats and store it in database.
-                        {
+                        if (!FileUploader.isUploading){ //if file is not uploading. (file is not in use) then calculate the stats and store it in database.
+
                             String data = "";
                             //List<Stats> stepDownStats = null;
-                            if (internalCounter == 0)  //get the stats for the first time.
-                            {
+                            if (internalCounter == 0){  //get the stats for the first time.
                                 oldStats = Stats.getStats(context);
-                            }
-                            else if (internalCounter > Settings.NetInterval)
-                            {
+                            } else if (internalCounter > Settings.NetInterval) {
+
                                 newStats = Stats.getStats(context);
-                                if(newStats==null || oldStats==null)
-                                {
+
+                                if(newStats == null || oldStats == null) {
                                     //can't read network proc file.
                                     Log.e(Settings.TAG,"Unable to read network file. Stopping process");
                                 }
                                 diff = Stats.NETDifference(oldStats, newStats);
 
-
-/*                                Log.d(Settings.TAG,"New Data..--------------------");
-                                for(Stats st: newStats)
-                                {
-                                    Log.d(Settings.TAG, st.getStringData());
-                                }*/
-
                                 oldStats = newStats;
                                 try {
                                     startAsForeground();
-                                }
-                                catch (Exception ex)
-                                {
+                                } catch (Exception ex) {
                                     Log.d(Settings.TAG,"Error occurred while starting foreground");
                                 }
 
@@ -301,16 +264,13 @@ public class BackgroundIntentService extends Service {
 
                                     data = data + stats.getStringData()+"|" + networkType +"\n";
                                 }
-                            //    Log.d(Settings.TAG,"data without difference...++++++++++++++++++++++++++++++++++++++++++++++");
-                              //  Log.d(Settings.TAG,data);
-                                if (error)
-                                {
+
+                                if (error) {
                                     networkErrorCount++;
                                     //retry for network file...but skip this malformed data...
 
-                                    if(networkErrorCount>=3)
-                                    {
-                                        retry=false;
+                                    if(networkErrorCount >= 3) {
+                                        retry = false;
                                         forceStop = true;
                                         ShowMessage.message("Malformed data. Need to restart phone.", context);
                                         Log.d(Settings.TAG, "Malformed network file");
@@ -320,12 +280,10 @@ public class BackgroundIntentService extends Service {
                                         stop_request = true;
                                         onDestroy();
                                         return;
+                                    } else{
+                                        retry = true;
                                     }
-                                    else
-                                        retry=true;
-                                }
-                                else
-                                {
+                                } else {
                                     networkErrorCount = 0;
                                 }
 
@@ -348,7 +306,7 @@ public class BackgroundIntentService extends Service {
                                 new StatsFileManager(context).SaveStats(data);
                             }
                             //Log.d("stats-result", "Internal counter: " + internalCounter);
-                    internalCounter++;
+                            internalCounter++;
 
                         }
                         counter++;
@@ -364,45 +322,41 @@ public class BackgroundIntentService extends Service {
         }
         isThreadRunning = !isThreadRunning;
 
-        if(stop_request)
+        if(stop_request){
             return START_NOT_STICKY;
-        else
+        }
         return START_STICKY;
     }
 
-
-    public String getNetworkType()
-    {
-        return Settings.network_type+"";
+    public String getNetworkType() {
+        return Settings.network_type + "";
     }
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        try
-        {
+        try {
             Log.d(Settings.TAG, "Swipped out.");
             super.onTaskRemoved(rootIntent);
-            if(wakeLock.isHeld())
+            if(wakeLock.isHeld()){
                 wakeLock.release();
+            }
 
             handler.removeCallbacks(runnable);
             stopForeground(true);
            /*code for step down*/ //unregisterReceiver(mybroadcast);
             is_Service_Running = false;
 
-            if (!stop_request)
+            if (!stop_request){
                 sendBroadcast(new Intent("YouWillNeverKillMe"));
+            }
 
             stopSelf();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             Log.d(Settings.TAG, "error " + ex.toString());
         }
     }
 
-    private void sendMessage()
-    {
+    private void sendMessage() {
         Intent intent=new Intent("updateUI");
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
@@ -411,27 +365,29 @@ public class BackgroundIntentService extends Service {
     public void onDestroy() {
         super.onDestroy();
 
-        try
-        {
+        try {
 
            /*code for stpe down*/ //unregisterReceiver(mybroadcast);
-            if(wakeLock.isHeld())
+            if(wakeLock.isHeld()){
                 wakeLock.release();
+            }
+
             handler.removeCallbacks(runnable);
             is_Service_Running = false;
             stopForeground(true);
+
             if(forceStop) {
                 Intent i = new Intent(this, BackgroundIntentService.class);
                 stopService(i);
             }
 
-            if (!stop_request)
+            if (!stop_request){
                 sendBroadcast(new Intent("YouWillNeverKillMe"));
-        }
-        catch (Exception ex) {
+            }
+
+        } catch (Exception ex) {
             Log.d(Settings.TAG,"error "+ex.toString());
         }
-
     }
 
     public int compare(Date d1, Date d2) {
@@ -441,7 +397,6 @@ public class BackgroundIntentService extends Service {
 
         Calendar calendar2 = Calendar.getInstance();
         calendar1.setTime(d2);
-
 
         if (calendar1.YEAR != calendar2.YEAR)
             return calendar1.YEAR - calendar2.YEAR;

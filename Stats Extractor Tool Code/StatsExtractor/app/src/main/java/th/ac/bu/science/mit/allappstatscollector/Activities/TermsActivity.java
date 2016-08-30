@@ -8,7 +8,7 @@ import android.widget.CheckBox;
 
 import th.ac.bu.science.mit.allappstatscollector.R;
 
-class TermsActivity extends GeneralActivity {
+public class TermsActivity extends GeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

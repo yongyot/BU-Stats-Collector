@@ -14,7 +14,7 @@ import java.util.List;
 
 import th.ac.bu.science.mit.allappstatscollector.R;
 
-class DashBoardActivity extends GeneralActivity {
+public class DashBoardActivity extends GeneralActivity {
 
     boolean isSuspicious = false;
 
