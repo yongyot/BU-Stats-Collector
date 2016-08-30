@@ -28,11 +28,10 @@ public class HashGen {
     public volatile static boolean isGenerating = false;
 
     private  void writeToFile(String data, boolean append) {
-        data = Settings.getMacAddress()+"\n"+data;
 
-        File rootPath = Environment.getExternalStorageDirectory();
+        data = Settings.getMacAddress() + "\n" + data;
         File statsDir;
-        statsDir = new File(rootPath+"/BU-Stat-Collector/");
+        statsDir = new File(Settings.APPLICATION_PATH);
 
         if(!statsDir.exists()){
             statsDir.mkdirs();
@@ -49,8 +48,8 @@ public class HashGen {
     }
 
     public void getAllAppInfo(Context context) {
-        isGenerating=true;
-        String data="";
+        isGenerating = true;
+        String data = "";
 
         SimpleDateFormat formatter = new SimpleDateFormat("d MMM yyyy HH:mm:ss:SSS",Locale.ENGLISH);
         formatter.setTimeZone(TimeZone.getTimeZone("GMT"));

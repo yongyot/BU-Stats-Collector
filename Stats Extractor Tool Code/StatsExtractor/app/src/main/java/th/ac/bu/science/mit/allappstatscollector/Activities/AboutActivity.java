@@ -7,7 +7,7 @@ import android.widget.TextView;
 import th.ac.bu.science.mit.allappstatscollector.BuildConfig;
 import th.ac.bu.science.mit.allappstatscollector.R;
 
-class AboutActivity extends GeneralActivity {
+public class AboutActivity extends GeneralActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -39,7 +39,7 @@ public class StatsFileManager {
 
         String createtime = sdf.format(cal.getTime());
 
-        String metaInfo = "File Name: " + Settings.getOutputFileName(context) + "\r\n" +
+        String metaInfo = "File Name: " + Settings.getOutputFileName() + "\r\n" +
                 "Extraction Started: " + createtime + "\r\n";
         String formatStr = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s";
         String title = String.format(formatStr, "LogTime"
@@ -75,12 +75,12 @@ public class StatsFileManager {
         long size = 0;
         try {
             File statsDir;
-            statsDir = new File(Settings.getApplicationPath(context));
+            statsDir = new File(Settings.APPLICATION_PATH);
 
             if (!statsDir.exists())
                 statsDir.mkdirs();
 
-            File file = new File(statsDir, Settings.getOutputFileName(context));
+            File file = new File(statsDir, Settings.getOutputFileName());
 
             size = file.length() / 1024;
 
@@ -94,13 +94,13 @@ public class StatsFileManager {
     private synchronized void writeToFile(String data, boolean append) {
 
         File statsDir;
-        statsDir = new File(Settings.getApplicationPath(context));
+        statsDir = new File(Settings.APPLICATION_PATH);
 
         if (!statsDir.exists())
             statsDir.mkdirs();
 
         try {
-            File file = new File(statsDir, Settings.getOutputFileName(context));
+            File file = new File(statsDir, Settings.getOutputFileName());
             FileOutputStream fos = new FileOutputStream(file, append);
             fos.write(data.getBytes());
             fos.close();
@@ -113,12 +113,11 @@ public class StatsFileManager {
     public static boolean compressFile(Context cont) {
         boolean result = false;
         byte[] buffer = new byte[1024];
-        String outputFile = Settings.getOutputFileName(cont);
+        String outputFile = Settings.getOutputFileName();
         try {
 
-            File rootPath = Environment.getExternalStorageDirectory();
             File statsDir;
-            statsDir = new File(rootPath + "/BU-Stat-Collector/");
+            statsDir = new File(Settings.APPLICATION_PATH);
 
             FileOutputStream fos = new FileOutputStream(statsDir + "/" + outputFile + ".zip");
 

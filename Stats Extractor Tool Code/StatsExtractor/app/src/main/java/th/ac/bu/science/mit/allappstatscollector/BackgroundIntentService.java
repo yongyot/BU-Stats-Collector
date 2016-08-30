@@ -77,7 +77,7 @@ public class BackgroundIntentService extends Service {
 
         Settings.loadSettings(context);
 
-        String path = Environment.getExternalStorageDirectory() + "/BU-Stat-Collector/" + Settings.getOutputFileName(context);
+        String path = Settings.APPLICATION_PATH + Settings.getOutputFileName();
         File file = new File(path);
         stop_request = false;
 

@@ -18,25 +18,24 @@ import CoreStats.NET;
 public class Settings {
     static public int interval = 1;
     static public int NetInterval = 5;
-    public static String TAG="stats-results";
+    public static String TAG = "Settings";
     public static boolean IS_WIFI_AVAILABLE;
     static public int network_type; //2 wifi, 1 mobile, 0 no network.
     public static String WIFI_INTERFACE = null;
     public static String MAC = null;
     public static int UploadSize = 2040; // 2 MB (Unit: bytes)
+    public static String APPLICATION_PATH;
 
     public static String getHashFilePath(){
-        return Environment.getExternalStorageDirectory()+"/BU-Stat-Collector/hashData";
-    }
-
-    public static String getApplicationPath(Context context){
-        return context.getFilesDir().toString();
+        return APPLICATION_PATH + "/hashData";
     }
 
     public static void loadSettings(Context context) {
         WIFI_INTERFACE = NET.getWifiInterfaceName();
         MAC = NET.getMacAddress(context);
         IS_WIFI_AVAILABLE = NET.isWifiAvailable(context);
+        //APPLICATION_PATH = Environment.getExternalStorageDirectory() + "/BU-Stat-Collector/";
+        APPLICATION_PATH = context.getCacheDir().getAbsolutePath() + "/BU-Stat-Collector/";
     }
 
     public static boolean isUsageAccessGranted(Context context) {
@@ -67,7 +66,7 @@ public class Settings {
         return interval;
     }
 
-    public static String getOutputFileName(Context context) {
+    public static String getOutputFileName() {
         return MAC.replace(":","-")+".stats";
     }
     public static String getMacAddress() {

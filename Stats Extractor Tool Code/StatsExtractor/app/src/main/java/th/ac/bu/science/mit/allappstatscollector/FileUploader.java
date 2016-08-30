@@ -34,7 +34,7 @@ public class FileUploader extends AsyncTask<String, Void, String> {
 
         //String upLoadServerUri =  "http://192.168.1.106//default.aspx";
         //String upLoadServerUri =  "http://10.109.68.7//default.aspx?id="+Settings.getOutputFileName();
-        String upLoadServerUri =  "http://mobile-monitoring.bu.ac.th//default.aspx?id=" + Settings.getOutputFileName(context);
+        String upLoadServerUri =  "http://mobile-monitoring.bu.ac.th//default.aspx?id=" + Settings.getOutputFileName();
 
         //String upLoadServerUri =  "http://210.86.135.102//default.aspx";
         int serverResponseCode = 0;
@@ -137,9 +137,9 @@ public class FileUploader extends AsyncTask<String, Void, String> {
             StatsFileManager.compressFile(context);//compress the file in background first..
             //Log.d(Settings.TAG,"Compressing file for uploading.");
 
-            String path= Environment.getExternalStorageDirectory()+"/BU-Stat-Collector/"+Settings.getOutputFileName(context)+".zip";
+            String path = Settings.APPLICATION_PATH  + Settings.getOutputFileName() + ".zip";
 
-            int serverCode=uploadFile(path);
+            int serverCode = uploadFile(path);
 
             if(serverCode == 200) {
                 //Log.d(Settings.TAG, "File uploaded successfully.");
