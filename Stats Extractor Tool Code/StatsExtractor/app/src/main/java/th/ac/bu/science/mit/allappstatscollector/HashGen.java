@@ -25,12 +25,12 @@ import th.ac.bu.science.mit.allappstatscollector.Models.AppsInfo;
  */
 public class HashGen {
 
-    public volatile static boolean isGenerating=false;
+    public volatile static boolean isGenerating = false;
 
     private  void writeToFile(String data, boolean append) {
-        data=Settings.getMacAddress()+"\n"+data;
+        data = Settings.getMacAddress()+"\n"+data;
 
-        File rootPath= Environment.getExternalStorageDirectory();
+        File rootPath = Environment.getExternalStorageDirectory();
         File statsDir;
         statsDir = new File(rootPath+"/BU-Stat-Collector/");
 
@@ -59,8 +59,7 @@ public class HashGen {
             final List<ApplicationInfo> packs = context.getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
 
             for (ApplicationInfo appInfo : packs) {
-                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
-                {
+                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                     AppsInfo app=getPackageInfo(appInfo.packageName, context);
 
                     Calendar calendar = Calendar.getInstance(Locale.ENGLISH);

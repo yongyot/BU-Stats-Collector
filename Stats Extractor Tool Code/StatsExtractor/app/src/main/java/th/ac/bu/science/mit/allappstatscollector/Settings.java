@@ -3,6 +3,7 @@ package th.ac.bu.science.mit.allappstatscollector;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 
 import java.util.List;
@@ -20,18 +21,22 @@ public class Settings {
     public static String TAG="stats-results";
     public static boolean IS_WIFI_AVAILABLE;
     static public int network_type; //2 wifi, 1 mobile, 0 no network.
-    public static String WIFI_INTERFACE=null;
-    public static String MAC=null;
+    public static String WIFI_INTERFACE = null;
+    public static String MAC = null;
     public static int UploadSize = 2040; // 2 MB (Unit: bytes)
 
     public static String getHashFilePath(){
         return Environment.getExternalStorageDirectory()+"/BU-Stat-Collector/hashData";
     }
 
+    public static String getApplicationPath(Context context){
+        return context.getFilesDir().toString();
+    }
+
     public static void loadSettings(Context context) {
-        WIFI_INTERFACE=NET.getWifiInterfaceName();
-        MAC=NET.getMacAddress(context);
-        IS_WIFI_AVAILABLE=NET.isWifiAvailable(context);
+        WIFI_INTERFACE = NET.getWifiInterfaceName();
+        MAC = NET.getMacAddress(context);
+        IS_WIFI_AVAILABLE = NET.isWifiAvailable(context);
     }
 
     public static boolean isUsageAccessGranted(Context context) {

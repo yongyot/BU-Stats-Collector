@@ -74,9 +74,8 @@ public class StatsFileManager {
     public static long getFileSize(Context context) {
         long size = 0;
         try {
-            File rootPath = Environment.getExternalStorageDirectory();
             File statsDir;
-            statsDir = new File(rootPath + "/BU-Stat-Collector/");
+            statsDir = new File(Settings.getApplicationPath(context));
 
             if (!statsDir.exists())
                 statsDir.mkdirs();
@@ -94,9 +93,8 @@ public class StatsFileManager {
 
     private synchronized void writeToFile(String data, boolean append) {
 
-        File rootPath = Environment.getExternalStorageDirectory();
         File statsDir;
-        statsDir = new File(rootPath + "/BU-Stat-Collector/");
+        statsDir = new File(Settings.getApplicationPath(context));
 
         if (!statsDir.exists())
             statsDir.mkdirs();

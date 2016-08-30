@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
@@ -26,7 +25,6 @@ import th.ac.bu.science.mit.allappstatscollector.HashGen;
 import th.ac.bu.science.mit.allappstatscollector.Notify;
 import th.ac.bu.science.mit.allappstatscollector.R;
 import th.ac.bu.science.mit.allappstatscollector.Settings;
-import th.ac.bu.science.mit.allappstatscollector.ShowMessage;
 import th.ac.bu.science.mit.allappstatscollector.StatsFileManager;
 
 
@@ -37,27 +35,14 @@ public class MainActivity extends ActionBarActivity
     TextView tvWarning, tvWarningText, tvMacAddress;
     Button btnStart, btnUsage;
     Runnable runnable;
-    int uiUpdateInterval=3;
-    boolean isAppPaused=false;
-
-    public static Handler handlerFileUpload=new Handler(new Handler.Callback()    {
-        @Override
-        public boolean handleMessage(Message msg)
-        {
-            Bundle bundle=msg.getData();
-            String text=bundle.getString("message","default Message");
-            ShowMessage.message(text,context);
-            return false;
-        }
-    });
+    boolean isAppPaused = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context=MainActivity.this;
-        context=getApplicationContext();
+        context = MainActivity.this;
+        context = getApplicationContext();
         Settings.loadSettings(context);
 
         btnStart = (Button)findViewById(R.id.btnStartExtracting);
@@ -65,26 +50,24 @@ public class MainActivity extends ActionBarActivity
         tvWarning = (TextView)findViewById(R.id.tvWarning);
         tvWarningText = (TextView)findViewById(R.id.tvWarningText);
         tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
+
+        Log.d("emji", Settings.getApplicationPath(context));
     }
 
     private BroadcastReceiver mMessageRecevier = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            if(!isAppPaused)
-            {
+            if(!isAppPaused) {
                 //update UI
-                if(isMyServiceRunning(BackgroundIntentService.class))
-                {
+                if(isMyServiceRunning(BackgroundIntentService.class)) {
                     btnStart.setText("Stop Collecting Data");
                     tvWarning.setTextColor(Color.GREEN);
 
                     tvWarning.setText("Status:");
                     tvWarningText.setText("Collecting data....");
                     setCounter();
-                }
-                else
-                {
+                } else {
                     btnStart.setText("Start Collecting Data");
                     tvWarning.setTextColor(Color.parseColor("#FFA500"));    //orange color
                     tvWarning.setText("Status:");
@@ -95,38 +78,34 @@ public class MainActivity extends ActionBarActivity
     };
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageRecevier,new IntentFilter("updateUI"));
 
         isAppPaused=false;
 
         super.onStart();
 
-        if(Settings.isUsageAccessGranted(context))      //if user access is granted set the start button to visible and user access to invisible.
-        {
+        if(Settings.isUsageAccessGranted(context)){      //if user access is granted set the start button to visible and user access to invisible.
+
             btnStart.setVisibility(View.VISIBLE);
             btnUsage.setVisibility(View.INVISIBLE);
 
-            if(isMyServiceRunning(BackgroundIntentService.class))        //access is already granted and service is running.
-            {
+            if(isMyServiceRunning(BackgroundIntentService.class)){        //access is already granted and service is running.
+
                 btnStart.setText("Stop Collecting Data");
                 tvWarning.setTextColor(Color.GREEN);
 
                 tvWarning.setText("Status:");
                 tvWarningText.setText("Collecting data....");
                 setCounter();
-            }
-            else
-            {
+            } else {
                 btnStart.setText("Start Collecting Data");
                 tvWarning.setTextColor(Color.parseColor("#FFA500"));    //orange color
                 tvWarning.setText("Status:");
                 tvWarningText.setText("Ready for Collection.");
             }
-        }
-        else                                            //user access is not granted. Set the btnStart to invisble and usage access to visible.
-        {
+        } else {                                            //user access is not granted. Set the btnStart to invisble and usage access to visible.
+
             btnStart.setVisibility(View.INVISIBLE);
             btnUsage.setVisibility(View.VISIBLE);
             tvWarning.setText("Warning:");
@@ -134,8 +113,7 @@ public class MainActivity extends ActionBarActivity
             tvWarningText.setText("Please turn on usage access first.");
         }
 
-        if(Settings.WIFI_INTERFACE==null || Settings.MAC==null)
-        {
+        if(Settings.WIFI_INTERFACE == null || Settings.MAC == null) {
             return;
         }
 
@@ -145,9 +123,7 @@ public class MainActivity extends ActionBarActivity
             if (NetworkInterface.getByName("rmnet0") == null) {
                 Notify.showNotification(context, "Data interface error.");
             }
-        }
-        catch(Exception ex)
-        {
+        } catch(Exception ex) {
             Log.d(Settings.TAG,"Can not find data interface name. Details: "+ex.toString());
         }
 
@@ -172,23 +148,17 @@ public class MainActivity extends ActionBarActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
-        try
-        {
+        try {
             unregisterReceiver(mMessageRecevier);
-        }
-        catch (Exception ex)
-        {
-
+        } catch (Exception ex) {
         }
 
         isAppPaused=true;
 
     }
-    public void setCounter()
-    {
+    public void setCounter() {
         try {
             final TextView tvCounter = (TextView) findViewById(R.id.tvCounter);
             final TextView tvFileSize = (TextView) findViewById(R.id.tvFileSize);
@@ -207,23 +177,17 @@ public class MainActivity extends ActionBarActivity
 
                 }
             }, Settings.getInterval() * 1000);
-        }
-        catch(Exception ex)
-        {
+        } catch(Exception ex) {
             Notify.showNotification(context,"Error while setting counter text");
         }
     }
 
-    public void onClickStart(View v)
-    {
+    public void onClickStart(View v) {
         if(isMyServiceRunning(BackgroundIntentService.class)!=true) {      //service is stopped. Start it.
             Intent i = new Intent(this, BackgroundIntentService.class);
-            try
-            {
-                    stopService(i);
-            }
-            catch (Exception ex)
-            {
+            try {
+                stopService(i);
+            } catch (Exception ex) {
                 Log.d(Settings.TAG, "Error occurred while stopping service before starting a new instance of it. Details:"+ex.toString());
             }
 
@@ -234,9 +198,7 @@ public class MainActivity extends ActionBarActivity
             tvWarningText.setText("Collecting data....");
 
             setCounter();
-        }
-        else
-        {
+        } else {
             stopService(new Intent(this,BackgroundIntentService.class));
             BackgroundIntentService.stop_request=true;
            // ShowMessage.message("Service stopped.", context);
@@ -250,11 +212,10 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
-    public void gotoUsageAccess(View v)
-    {
+    public void gotoUsageAccess(View v) {
         Intent i = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(i);
-           }
+    }
 
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -267,8 +228,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         mHandler.removeCallbacks(null);
         super.onDestroy();
     }

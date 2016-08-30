@@ -122,9 +122,10 @@ public class HashFileUploader extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if(serverCode==200)
-        {File file=new File(Settings.getHashFilePath());
-        file.delete();}
+        if(serverCode == 200) {
+            File file = new File(Settings.getHashFilePath());
+            file.delete();
+        }
     }
 
     @Override
@@ -134,29 +135,30 @@ public class HashFileUploader extends AsyncTask<String, Void, String> {
            // Log.d("stats-results","Internet Available: "+isInternetAvailable());
             //Log.d("stats-results", "Uploading file...");
 
-            String path= Settings.getHashFilePath();
-             serverCode=uploadFile(path);
+            String path = Settings.getHashFilePath();
+            serverCode = uploadFile(path);
 
 
             //Log.d("stats-hash", "Server Code from hashuploader: " + serverCode);
-            if(serverCode == 200) {
+            if(serverCode==200) {
 
             Log.d(Settings.TAG, "Hash File uploaded successfully.");
             File file=new File(Settings.getHashFilePath());
             file.delete();
 
-            } else if(serverCode==404) {
+            } else if(serverCode == 404) {
                 Log.d(Settings.TAG,"Can not connect to server. Hash file can not be uploaded");
-            } else if(serverCode==-1){
+            } else if(serverCode == -1){
                 Log.d(Settings.TAG,"Hash file does not exist.");
-            } else if(serverCode==504){
+            } else if(serverCode == 504){
                 Log.d(Settings.TAG,"Gateway Timeout. Couldn't upload hash file");
-            } else if(serverCode==0){
+            } else if(serverCode == 0){
                 Log.d(Settings.TAG,"Can not reach to server with this network.");
             } else {
                 Log.d(Settings.TAG, "Unhandled server code. Couldn't upload hash file" + serverCode);
             }
-        }  else  {
+        } else
+        {
             Log.d(Settings.TAG,"No internet access. Couldn't upload hash file");
         }
         isUploading=false;
