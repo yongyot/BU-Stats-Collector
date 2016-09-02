@@ -224,7 +224,9 @@ public class BackgroundIntentService extends Service {
 
                         //if hash file is uploaded and does not exist and wifi is available and hash generation process is not working and uploading of stats file is not working and current file size has surpass the threshold then upload it.
                         if (StatsFileManager.getFileSize(context) >= Settings.UploadSize
-                                && isExist == false && HashGen.isGenerating == false){
+                                && isExist == false
+                                && HashGen.isGenerating == false){
+
                                 Log.d("bu-stats","Uploading File.");
                                 FileUploader fileUploader = new FileUploader(context);
                                 fileUploader.execute();

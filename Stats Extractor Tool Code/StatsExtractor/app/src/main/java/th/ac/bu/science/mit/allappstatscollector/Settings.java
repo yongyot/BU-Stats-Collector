@@ -11,6 +11,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import CoreStats.NET;
+import th.ac.bu.science.mit.allappstatscollector.Activities.AppInfoActivity;
 
 /**
  * Created by Komal on 11/2/2015.
@@ -23,19 +24,18 @@ public class Settings {
     static public int network_type; //2 wifi, 1 mobile, 0 no network.
     public static String WIFI_INTERFACE = null;
     public static String MAC = null;
-    public static int UploadSize = 2040; // 2 MB (Unit: bytes)
+    public static int UploadSize = 2048; // 2 MB (Unit: bytes)
     public static String APPLICATION_PATH;
 
     public static String getHashFilePath(){
-        return APPLICATION_PATH + "/hashData";
+        return APPLICATION_PATH + "hashData";
     }
 
     public static void loadSettings(Context context) {
         WIFI_INTERFACE = NET.getWifiInterfaceName();
         MAC = NET.getMacAddress(context);
         IS_WIFI_AVAILABLE = NET.isWifiAvailable(context);
-        //APPLICATION_PATH = Environment.getExternalStorageDirectory() + "/BU-Stat-Collector/";
-        APPLICATION_PATH = context.getCacheDir().getAbsolutePath() + "/BU-Stat-Collector/";
+        APPLICATION_PATH = context.getCacheDir().toString() + "/BU-Stat-Collector/";
     }
 
     public static boolean isUsageAccessGranted(Context context) {
