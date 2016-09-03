@@ -120,7 +120,7 @@ public class FileUploader extends AsyncTask<String, Void, String> {
             } catch (Exception e) {
 
                 Log.d(Settings.TAG, "Error uploading file. Details:  "+ e.getMessage());
-                Notify.showNotification(context,"Error uploading file.");
+                //Notify.showNotification(context,"Error uploading file.");
             }
 
             return serverResponseCode;
