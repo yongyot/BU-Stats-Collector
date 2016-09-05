@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     private static String TAG = "MainActivity";
     private static Context mContext;
     private final Handler mHandler = new Handler();
-    private TextView tvWarning, tvWarningText, tvMacAddress;
+    private TextView tvWarning, tvWarningText, tvMacAddress, tvLastTime;
     private Button btnStart, btnUsage;
     private Runnable mRunnable;
     private boolean isAppPaused = false;
@@ -55,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
         tvWarning = (TextView)findViewById(R.id.tvWarning);
         tvWarningText = (TextView)findViewById(R.id.tvWarningText);
         tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
+        tvLastTime = (TextView)findViewById(R.id.tvLastTime);
     }
 
     @Override
@@ -122,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void initHasFile(){
 
-        if(Settings.WIFI_INTERFACE != null && Settings.MAC != null) {
+        if(/*Settings.WIFI_INTERFACE != null &&*/ Settings.MAC != null) {
 
             try {
                 if (NetworkInterface.getByName("rmnet0") == null) {
@@ -228,7 +229,8 @@ public class MainActivity extends ActionBarActivity {
 
             tvCounter.setText("Session: " + Integer.toString(BackgroundIntentService.counter));
             tvFileSize.setText("File Size: " + Long.toString(StatsFileManager.getFileSize(mContext)) + " KB");
-
+            tvLastTime.setText("เวลาที่ส่งไฟล์ล่าสุด: " + SharePrefs.getPreferenceString(mContext, "las_time_upload", ""));
+            Log.d("emji", "get currentDateandTime: " + SharePrefs.getPreferenceString(mContext, "las_time_upload", ""));
             mHandler.postDelayed(mRunnable = new Runnable() {
                 @Override
                 public void run() {

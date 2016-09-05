@@ -120,7 +120,7 @@ public class NetStatsExtractor {
 
                     String dataFG[] = lines[i + 1].trim().split("\\s+");    // We already read the first now read second one.
                     i++;
-                    if (dataBG[INTERFACE].equalsIgnoreCase(Settings.WIFI_INTERFACE)){    //wifi background data for up and down is here
+                    if (false){//(dataBG[INTERFACE].equalsIgnoreCase(Settings.WIFI_INTERFACE)){    //wifi background data for up and down is here
 
                         //read for the wifi background and foreground here
 

@@ -14,8 +14,11 @@ import java.io.FileInputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
+import th.ac.bu.science.mit.allappstatscollector.Utils.SharePrefs;
 
 /**
  * Created by Komal on 11/2/2015.
@@ -114,6 +117,13 @@ public class FileUploader extends AsyncTask<String, Void, String> {
                 fileInputStream.close();
                 dos.flush();
                 dos.close();
+
+                // cache last time
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                String currentDateandTime = sdf.format(new Date());
+                Log.d("emji", "currentDateandTime: " + currentDateandTime);
+                SharePrefs.setPreference(context, "las_time_upload", currentDateandTime);
+
             } catch (MalformedURLException ex) {
                 ex.printStackTrace();
                 Log.d(Settings.TAG, "Error uploading file. Details: " + ex.getMessage(), ex);
