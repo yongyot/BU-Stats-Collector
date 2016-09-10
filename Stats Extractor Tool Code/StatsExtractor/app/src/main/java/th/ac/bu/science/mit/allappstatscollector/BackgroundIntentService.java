@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import CoreStats.Stats;
 import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
@@ -209,18 +210,18 @@ public class BackgroundIntentService extends Service {
                         //boolean isWifiAvailable = NET.isWifiAvailable(context);
 
                         //if hash file exist upload it to server..
-                        if (isExist && HashFileUploader.isUploading == false && Settings.IS_WIFI_AVAILABLE && HashGen.isGenerating == false) {     //if there is hash file available and wifi is on upload the file and delete it.
+                        if (isExist && HashFileUploader.isUploading == false /*&& Settings.IS_WIFI_AVAILABLE*/ && HashGen.isGenerating == false) {     //if there is hash file available and wifi is on upload the file and delete it.
                             HashFileUploader hfUploader = new HashFileUploader(context);
                             hfUploader.execute();   //this method uploads the hash file to server and delete the file from device.
                         }
 
                         isExist = file.exists();   //make sure file does not exist.
 
-                        Log.d("bu-stats","Upload Size:"+Settings.UploadSize);
-                        Log.d("bu-stats","isUploading:"+FileUploader.isUploading);
-                        Log.d("bu-stats","IS_WIFI_AVAILABLE:"+Settings.IS_WIFI_AVAILABLE);
-                        Log.d("bu-stats","isExist:"+isExist);
-                        Log.d("bu-stats","IsGenerating Hash Code: "+HashGen.isGenerating);
+                        Log.d("bu-stats","Upload Size:" + Settings.UploadSize);
+                        Log.d("bu-stats","isUploading:" + FileUploader.isUploading);
+                        Log.d("bu-stats","IS_WIFI_AVAILABLE:" + Settings.IS_WIFI_AVAILABLE);
+                        Log.d("bu-stats","isExist:" + isExist);
+                        Log.d("bu-stats","IsGenerating Hash Code: " + HashGen.isGenerating);
 
                         //if hash file is uploaded and does not exist and wifi is available and hash generation process is not working and uploading of stats file is not working and current file size has surpass the threshold then upload it.
                         if (StatsFileManager.getFileSize(context) >= Settings.UploadSize
@@ -337,7 +338,7 @@ public class BackgroundIntentService extends Service {
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         try {
-            Log.d(Settings.TAG, "Swipped out.");
+
             super.onTaskRemoved(rootIntent);
             if(wakeLock.isHeld()){
                 wakeLock.release();
@@ -349,7 +350,10 @@ public class BackgroundIntentService extends Service {
             is_Service_Running = false;
 
             if (!stop_request){
-                sendBroadcast(new Intent("YouWillNeverKillMe"));
+                Log.d(Settings.TAG, "Swipped out. onTaskRemoved");
+                Intent intent = new Intent("YouWillNeverKillMe");
+                intent.setClass(getApplicationContext(), RestartServiceReceiver.class);
+                sendBroadcast(intent);
             }
 
             stopSelf();
@@ -365,7 +369,6 @@ public class BackgroundIntentService extends Service {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
 
         try {
 
@@ -384,11 +387,14 @@ public class BackgroundIntentService extends Service {
             }
 
             if (!stop_request){
-                sendBroadcast(new Intent("YouWillNeverKillMe"));
+                Log.d(Settings.TAG, "Swipped out. onDestroy");
+                Intent intent = new Intent("YouWillNeverKillMe");
+                intent.setClass(getApplicationContext(), RestartServiceReceiver.class);
+                sendBroadcast(intent);
             }
 
         } catch (Exception ex) {
-            Log.d(Settings.TAG,"error "+ex.toString());
+            Log.d(Settings.TAG,"error " + ex.toString());
         }
     }
 

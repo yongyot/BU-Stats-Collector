@@ -17,8 +17,8 @@ import th.ac.bu.science.mit.allappstatscollector.Activities.AppInfoActivity;
  * Created by Komal on 11/2/2015.
  */
 public class Settings {
-    static public int interval = 1;
-    static public int NetInterval = 5;
+    static public int interval = 5;
+    static public int NetInterval = 1;
     public static String TAG = "Settings";
     public static boolean IS_WIFI_AVAILABLE;
     static public int network_type; //2 wifi, 1 mobile, 0 no network.

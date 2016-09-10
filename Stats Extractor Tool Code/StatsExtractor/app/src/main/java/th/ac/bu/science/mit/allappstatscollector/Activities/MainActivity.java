@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     private static String TAG = "MainActivity";
     private static Context mContext;
     private final Handler mHandler = new Handler();
-    private TextView tvWarning, tvWarningText, tvMacAddress, tvLastTime;
+    private TextView tvWarning, tvWarningText, tvMacAddress;
     private Button btnStart, btnUsage;
     private Runnable mRunnable;
     private boolean isAppPaused = false;
@@ -55,7 +55,6 @@ public class MainActivity extends ActionBarActivity {
         tvWarning = (TextView)findViewById(R.id.tvWarning);
         tvWarningText = (TextView)findViewById(R.id.tvWarningText);
         tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
-        tvLastTime = (TextView)findViewById(R.id.tvLastTime);
     }
 
     @Override
@@ -223,20 +222,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setCounter() {
+
         try {
             final TextView tvCounter = (TextView) findViewById(R.id.tvCounter);
             final TextView tvFileSize = (TextView) findViewById(R.id.tvFileSize);
+            final TextView tvLastTime = (TextView) findViewById(R.id.tvLastTime);
 
             tvCounter.setText("Session: " + Integer.toString(BackgroundIntentService.counter));
             tvFileSize.setText("File Size: " + Long.toString(StatsFileManager.getFileSize(mContext)) + " KB");
             tvLastTime.setText("เวลาที่ส่งไฟล์ล่าสุด: " + SharePrefs.getPreferenceString(mContext, "las_time_upload", ""));
-            Log.d("emji", "get currentDateandTime: " + SharePrefs.getPreferenceString(mContext, "las_time_upload", ""));
+
             mHandler.postDelayed(mRunnable = new Runnable() {
                 @Override
                 public void run() {
 
                     tvCounter.setText("Session: " + Integer.toString(BackgroundIntentService.counter));
                     tvFileSize.setText("File Size: " + Long.toString(StatsFileManager.getFileSize(mContext)) + " KB");
+                    tvLastTime.setText("เวลาที่ส่งไฟล์ล่าสุด: " + SharePrefs.getPreferenceString(mContext, "las_time_upload", ""));
                     mHandler.postDelayed(this, Settings.getInterval() * 1000);
 
 

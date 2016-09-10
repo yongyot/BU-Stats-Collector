@@ -7,8 +7,8 @@ android {
         applicationId "th.ac.bu.science.mit.allappstatscollector"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 27
-        versionName '2.2.7'
+        versionCode 28
+        versionName '2.2.8'
     }
     buildTypes {
         release {
