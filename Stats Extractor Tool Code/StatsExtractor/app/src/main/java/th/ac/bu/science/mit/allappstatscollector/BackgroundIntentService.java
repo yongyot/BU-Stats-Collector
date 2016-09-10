@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -24,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import CoreStats.Stats;
 import th.ac.bu.science.mit.allappstatscollector.Activities.MainActivity;
@@ -335,11 +333,23 @@ public class BackgroundIntentService extends Service {
         return Settings.network_type + "";
     }
 
+    private void sendMessage() {
+        Intent intent = new Intent("updateUI");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        try {
 
-            super.onTaskRemoved(rootIntent);
+        super.onTaskRemoved(rootIntent);
+
+        try {
+            Log.d(Settings.TAG, "Swipped out.");
+
+            if (!stop_request){
+                sendBroadcast(new Intent("YouWillNeverKillMe"));
+            }
+
             if(wakeLock.isHeld()){
                 wakeLock.release();
             }
@@ -349,26 +359,15 @@ public class BackgroundIntentService extends Service {
            /*code for step down*/ //unregisterReceiver(mybroadcast);
             is_Service_Running = false;
 
-            if (!stop_request){
-                Log.d(Settings.TAG, "Swipped out. onTaskRemoved");
-                Intent intent = new Intent("YouWillNeverKillMe");
-                intent.setClass(getApplicationContext(), RestartServiceReceiver.class);
-                sendBroadcast(intent);
-            }
-
             stopSelf();
         } catch (Exception ex) {
             Log.d(Settings.TAG, "error " + ex.toString());
         }
     }
 
-    private void sendMessage() {
-        Intent intent=new Intent("updateUI");
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-    }
-
     @Override
     public void onDestroy() {
+        super.onDestroy();
 
         try {
 
@@ -387,10 +386,7 @@ public class BackgroundIntentService extends Service {
             }
 
             if (!stop_request){
-                Log.d(Settings.TAG, "Swipped out. onDestroy");
-                Intent intent = new Intent("YouWillNeverKillMe");
-                intent.setClass(getApplicationContext(), RestartServiceReceiver.class);
-                sendBroadcast(intent);
+                sendBroadcast(new Intent("YouWillNeverKillMe"));
             }
 
         } catch (Exception ex) {
