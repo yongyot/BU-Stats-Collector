@@ -158,7 +158,7 @@ public class BackgroundIntentService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        Log.d(Settings.TAG, "onStartCommand.");
         startAsForeground();
         networkErrorCount = 0;
         retry = true;
@@ -208,7 +208,9 @@ public class BackgroundIntentService extends Service {
                         //boolean isWifiAvailable = NET.isWifiAvailable(context);
 
                         //if hash file exist upload it to server..
-                        if (isExist && HashFileUploader.isUploading == false /*&& Settings.IS_WIFI_AVAILABLE*/ && HashGen.isGenerating == false) {     //if there is hash file available and wifi is on upload the file and delete it.
+                        if (isExist
+                                && HashFileUploader.isUploading == false
+                                && HashGen.isGenerating == false) {
                             HashFileUploader hfUploader = new HashFileUploader(context);
                             hfUploader.execute();   //this method uploads the hash file to server and delete the file from device.
                         }
@@ -371,6 +373,10 @@ public class BackgroundIntentService extends Service {
 
         try {
 
+            if (!stop_request){
+                sendBroadcast(new Intent("YouWillNeverKillMe"));
+            }
+
            /*code for stpe down*/ //unregisterReceiver(mybroadcast);
             if(wakeLock.isHeld()){
                 wakeLock.release();
@@ -383,10 +389,6 @@ public class BackgroundIntentService extends Service {
             if(forceStop) {
                 Intent i = new Intent(this, BackgroundIntentService.class);
                 stopService(i);
-            }
-
-            if (!stop_request){
-                sendBroadcast(new Intent("YouWillNeverKillMe"));
             }
 
         } catch (Exception ex) {

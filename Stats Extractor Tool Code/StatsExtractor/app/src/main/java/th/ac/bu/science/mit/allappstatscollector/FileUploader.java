@@ -121,7 +121,7 @@ public class FileUploader extends AsyncTask<String, Void, String> {
                 // cache last time
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 String currentDateandTime = sdf.format(new Date());
-                Log.d("emji", "currentDateandTime: " + currentDateandTime);
+
                 SharePrefs.setPreference(context, "las_time_upload", currentDateandTime);
 
             } catch (MalformedURLException ex) {
