@@ -1,6 +1,5 @@
 package th.ac.bu.science.mit.allappstatscollector.APIs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -14,7 +13,7 @@ public interface APIVirusTotal {
     @GET("index.php/file/report")
     Call<List<ModelVirusTotalReport>> GetReport(
             @Query("apikey") String apiKey,
-            @Query("resource[]") ArrayList<String> resourceList);
+            @Query("resource[]") List<String> resourceList);
 
 
 }
