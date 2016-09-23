@@ -59,33 +59,33 @@ public class HashGen {
 
             for (ApplicationInfo appInfo : packs) {
                 if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-                    AppsInfo app=getPackageInfo(appInfo.packageName, context);
+                    AppsInfo app = getPackageInfo(appInfo.packageName, context);
 
                     Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
                     calendar.setTimeInMillis(app.lastUpdate);
                     String date=  formatter.format(calendar.getTime());
-                    data=data+app.packageName+"*"+date+"*"+app.hash+"*"+app.versionName+"*"+app.versionCode+"\n";
+                    data = data + app.packageName + "*" + date + "*" + app.hash + "*"+ app.versionName + "*" + app.versionCode + "\n";
                 }
             }
         }
         writeToFile(data,false);
-        isGenerating=false;
+        isGenerating = false;
        // Log.d("stats-results", data);
     }
 
 
     public AppsInfo getPackageInfo(String packageName,Context context) {
-        AppsInfo appInfo=new AppsInfo();
+        AppsInfo appInfo = new AppsInfo();
 
         PackageManager pm = context.getPackageManager();
         try {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
-            long millis=packageInfo.lastUpdateTime;
-            appInfo.hash=getHash(packageInfo.applicationInfo.sourceDir);
-            appInfo.lastUpdate=millis;
-            appInfo.packageName=packageName;
-            appInfo.versionName=packageInfo.versionName;
-            appInfo.versionCode=packageInfo.versionCode+"";
+            long millis = packageInfo.lastUpdateTime;
+            appInfo.hash = getHash(packageInfo.applicationInfo.sourceDir);
+            appInfo.lastUpdate = millis;
+            appInfo.packageName = packageName;
+            appInfo.versionName = packageInfo.versionName;
+            appInfo.versionCode = packageInfo.versionCode + "";
             return appInfo;
 
         } catch (Exception ex) {
