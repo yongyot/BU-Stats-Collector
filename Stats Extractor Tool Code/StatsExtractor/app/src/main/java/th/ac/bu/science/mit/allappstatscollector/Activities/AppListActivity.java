@@ -2,8 +2,10 @@ package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import java.util.List;
 
 import th.ac.bu.science.mit.allappstatscollector.Adapters.AppEntityAdapter;
 import th.ac.bu.science.mit.allappstatscollector.R;
+import th.ac.bu.science.mit.allappstatscollector.Settings;
 
 public class AppListActivity extends GeneralActivity {
 
@@ -85,29 +88,37 @@ public class AppListActivity extends GeneralActivity {
     }
 
     void ShowMalwareMockup () {
+
         List<ApplicationInfo> malwareList = new ArrayList<>();
-        malwareList.add(installList.get(0));
-        malwareList.add(installList.get(1));
-        malwareList.add(installList.get(2));
+        //malwareList.add(installList.get(1));
+        //malwareList.add(installList.get(0));
+        final ApplicationInfo appInfo;
 
-        listadaptor = new AppEntityAdapter(this,
-                R.layout.layout_app_suspicious, malwareList);
+        PackageManager pm = this.getPackageManager();
+        try {
+            appInfo = pm.getApplicationInfo("com.ps.ddp", 0);
+            malwareList.add(appInfo);
 
-        ListView listView = (ListView) findViewById(R.id.listView1);
-        listView.setAdapter(listadaptor);
+            listadaptor = new AppEntityAdapter(this,
+                    R.layout.layout_app_suspicious, malwareList);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            ListView listView = (ListView) findViewById(R.id.listView1);
+            listView.setAdapter(listadaptor);
 
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                    Intent intent = new Intent(AppListActivity.this, MalwareInfoActivity.class);
+                    intent.putExtra("packageName", appInfo.packageName);
+                    startActivity(intent);
+                }
+            });
+        } catch (Exception ex) {
+            Log.d(Settings.TAG,"Error occurred in getPackageInfo method. Details: "+ ex.toString());
+        }
 
 
-                ApplicationInfo applicationInfo = installList.get(position);
-
-                Intent intent = new Intent(AppListActivity.this, AppInfoActivity.class);
-                intent.putExtra("packageName", applicationInfo.packageName);
-                startActivity(intent);
-            }
-        });
     }
 }

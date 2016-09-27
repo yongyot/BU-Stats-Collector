@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="50dp"
-    android:background="#66338f">
+    android:background="@android:color/holo_red_dark">
 
     <TextView
         android:layout_width="fill_parent"
@@ -12,9 +12,9 @@
         android:id="@+id/textTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#f2a354"
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center_vertical|center_horizontal"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@android:color/white" />
 </LinearLayout>

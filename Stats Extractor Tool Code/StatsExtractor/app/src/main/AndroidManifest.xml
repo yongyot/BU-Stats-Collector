@@ -69,20 +69,28 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activities.TermsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.DashBoardActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.InitScanActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AppListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AppInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.SettingsScreenActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.AboutActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Activities.TermsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.DashBoardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.InitScanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.AppListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.AppInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.SettingsScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.MalwareInfoActivity"></activity>
     </application>
 
 </manifest>

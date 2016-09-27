@@ -9,4 +9,5 @@ public class AppsInfo {
     public long lastUpdate;
     public String versionName;
     public String versionCode;
+    public ModelVirusTotalReport report;
 }

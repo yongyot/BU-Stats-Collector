@@ -6,6 +6,17 @@ public class ModelVirusTotalReport {
     String detection_ratio;
     String verbose_message;
 
+    public String Hash() {
+        return resource;
+    }
+
+    public boolean HasData () {
+        if (response_code == 0)
+            return false;
+        else
+            return true;
+    }
+
     @Override
     public String toString() {
         return resource + " : " + response_code + " (" + verbose_message + ")";

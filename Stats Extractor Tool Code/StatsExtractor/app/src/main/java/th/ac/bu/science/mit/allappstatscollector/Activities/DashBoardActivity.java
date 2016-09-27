@@ -51,7 +51,7 @@ public class DashBoardActivity extends GeneralActivity {
 
         TextView status = (TextView) findViewById(R.id.textStatus);
         status.setTextColor(Color.RED);
-        status.setText(String.format("%d %s", 3, getResources().getString(R.string.dashboard_suspicious)));
+        status.setText(String.format("%d %s", 1, getResources().getString(R.string.dashboard_suspicious)));
         isSuspicious = true;
     }
 
