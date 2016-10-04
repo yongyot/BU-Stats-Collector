@@ -17,3 +17,4 @@ D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOpt
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.application
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.exe
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.pdb
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.csprojResolveAssemblyReference.cache

@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>obout_Show_Net</name>
+    </assembly>
+    <members>
+        <member name="P:OboutInc.Show.Style.GetStyle">
+            <summary>
+            default style when CSSPath is empty
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.InnerHtml">
+            <summary>
+            InnerHtml
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.PanelType">
+            <summary>
+            PanelType
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.Url">
+            <summary>
+            Url to load inside the panel
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.ImagePath">
+            <summary>
+            InnerHtml
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.ImageTitle">
+            <summary>
+            Title of the panel in case it uses an image panel (html title attribute).
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.ImageWidth">
+            <summary>
+            Image width
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.ImageHeight">
+            <summary>
+            Image height
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.URLPanel_OnLoadScript">
+            <summary>
+            Client script to trigger when the URL is loaded.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Panel.Selected">
+            <summary>
+            if true, the panel will be selected as default on first load
+            </summary>
+        </member>
+        <member name="T:OboutInc.Show.PanelBaseCollection">
+            <summary>
+            panel base collection
+            </summary>
+        </member>
+        <member name="F:OboutInc.Show.Constants.myVersion">
+            Version information
+            
+        </member>
+        <member name="F:OboutInc.Show.Constants.isTrial">
+            isTrial = true - TrialVersion
+            isTrial = false - FullVersion
+            
+        </member>
+        <member name="M:OboutInc.Show.Show.CreateChildControls">
+            <summary>
+            Overrides the base CreateChildControls
+            </summary>
+        </member>
+        <member name="M:OboutInc.Show.Show.RenderChangerPanel(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Renders show changer controls
+            </summary>
+            <param name="writer"></param>
+        </member>
+        <member name="M:OboutInc.Show.Show.InternalAddPanel(OboutInc.Show.Panel)">
+            <summary>
+            add a new panel to the panels collection (internal method)
+            </summary>
+            <param name="panel">the panel component to be added</param>
+            <returns>index where the panel was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddImagePanel(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="imagePath">the image path to be loaded inside the panel</param>
+            <param name="imageTitle">the image title</param>
+            <param name="imageWidth">the image width</param>
+            <param name="imageHeight">the image height</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+            <returns>index where the panel image was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddImagePanel(System.String)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="imagePath">the image path to be loaded inside the panel</param>
+            <returns>index where the panel image was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddImagePanelAt(System.Int32,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            add a new panel to the panels collection at the specified position
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="imagePath">the image path to be loaded inside the panel</param>
+            <param name="imageWidth">the image width</param>
+            <param name="imageHeight">the image height</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddImagePanelAt(System.Int32,System.String)">
+            <summary>
+            add a new panel to the panels collection at the specified position
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="imagePath">the image path to be loaded inside the panel</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddUrlPanel(System.String,System.Boolean)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="Url">panel url to be loaded inside</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+            <returns>index where the panel image was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddUrlPanel(System.String)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="Url">panel url to be loaded inside</param>
+            <returns>index where the panel image was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddUrlPanelAt(System.Int32,System.String,System.Boolean)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="Url">panel url to be loaded inside</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddUrlPanelAt(System.Int32,System.String)">
+            <summary>
+            add a new panel image to the panels collection
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="Url">panel url to be loaded inside</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddHtmlPanel(System.String,System.Boolean)">
+            <summary>
+            add a new panel to the panels collection
+            </summary>
+            <param name="InnerHtml">panel html content</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+            <returns></returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddHtmlPanel(System.String)">
+            <summary>
+            add a new panel to the panels collection
+            </summary>
+            <param name="InnerHtml">panel html content</param>
+            <returns></returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddHtmlPanelAt(System.Int32,System.String,System.Boolean)">
+            <summary>
+            add a new panel to the panels collection
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="InnerHtml">panel html content</param>
+            <param name="selected">if true, the panel will be selected as default on first load</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddHtmlPanelAt(System.Int32,System.String)">
+            <summary>
+            add a new panel to the panels collection
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="InnerHtml">panel html content</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddPanel(OboutInc.Show.Panel)">
+            <summary>
+            add a new panel to the panels collection
+            </summary>
+            <param name="panel">the panel component to be added</param>
+            <returns>index where the panel was added into the collection</returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.AddPanelAt(System.Int32,OboutInc.Show.Panel)">
+            <summary>
+            add a new panel to the panels collection at the specified position
+            </summary>
+            <param name="index">position into the collection</param>
+            <param name="panel">the panel component to be added</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.RemovePanel(OboutInc.Show.Panel)">
+            <summary>
+            remove the specified panel from the collection
+            </summary>
+            <param name="panel">the panel to be removed from the collection</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.RemovePanelAt(System.Int32)">
+            <summary>
+            remove the panel at the specified position from the collection
+            </summary>
+            <param name="index">the panel index in the collection to be removed</param>
+        </member>
+        <member name="M:OboutInc.Show.Show.RandomString(System.Int32)">
+            <summary>
+            generate random string - internal method
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OboutInc.Show.Show.FixupUrl(System.String)">
+            <summary>
+            returns absolute path
+            </summary>
+            <param name="Url">string. Url</param>
+            <returns>string. absoluteUrl</returns>
+        </member>
+        <member name="P:OboutInc.Show.Show.ClientID">
+            <summary>
+            component ClientID
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.UniqueID">
+            <summary>
+            component UniqueID
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.StyleFolder">
+            <summary>
+            Path to folder with show style.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSPath">
+            <summary>
+            Full path to CSS file.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowPanelsHolder">
+            <summary>
+            CSS class name for panels holder.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowPanel">
+            <summary>
+            CSS class name for panel.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChanger">
+            <summary>
+            CSS class name for panels changer.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerPlay">
+            <summary>
+            CSS class name for panels changer play button.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerPlayOver">
+            <summary>
+            CSS class name for panels changer play button when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerPause">
+            <summary>
+            CSS class name for panels changer pause button.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerPauseOver">
+            <summary>
+            CSS class name for panels changer pause button when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerLeft">
+            <summary>
+            CSS class name for panels changer left.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerLeftOver">
+            <summary>
+            CSS class name for panels changer left when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerRight">
+            <summary>
+            CSS class name for panels changer right.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerRightOver">
+            <summary>
+            CSS class name for panels changer right when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerTop">
+            <summary>
+            CSS class name for panels changer top.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerTopOver">
+            <summary>
+            CSS class name for panels changer top when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerBottom">
+            <summary>
+            CSS class name for panels changer bottom.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerBottomOver">
+            <summary>
+            CSS class name for panels changer bottom when mouse is over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerNumber">
+            <summary>
+            CSS class name for panels changer number.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerNumberOver">
+            <summary>
+            CSS class name for panels changer number over.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.CSSShowChangerNumberSelected">
+            <summary>
+            CSS class name for panels changer number when is selected.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ShowType">
+            <summary>
+            show type
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.TimeBetweenPanels">
+            <summary>
+            Amount of time between each panel(1000 = 1 second)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.StartTimeDelay">
+            <summary>
+            Amount of time on first panel load (1000 = 1 second)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.TransitionType">
+            <summary>
+            panels transition type
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ScrollDirection">
+            <summary>
+            set scroll direction for the scroll transition type
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.FixedScrolling">
+            <summary>
+            allow scrolling only in the first defined direction
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.StopScrolling">
+            <summary>
+            if true, stop scrolling when mouse is over the Show (available when ShowType = Show)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.StopFading">
+            <summary>
+            if true, stop fading when mouse is over the Show
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.FadeFirstPanel">
+            <summary>
+            if true, begin by fading into the first panel (available when TransitionType = Fading)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ScrollingSpeed">
+            <summary>
+            speed of scrolling(lower value = slower)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ScrollingStep">
+            <summary>
+            step of scrolling(lower value = slower)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.FadingSpeed">
+            <summary>
+            speed of fading(lower value = slower)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.FadingStep">
+            <summary>
+            step of fading(lower value = slower)
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.RefreshOnLoad">
+            <summary>
+            If true, in case of URL panel is used, every time is visible it will be refreshed.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.OnPanelChangeStartEvent">
+            <summary>
+            The name of the client event for the panel change start.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.OnPanelChangeEndEvent">
+            <summary>
+            The name of the client event for the panel change end.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ImagesShowPath">
+            <summary>
+            Path to folder with images to be used in show.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ImagesFitAvailableSize">
+            <summary>
+            If true, the images will fit the available show size.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ImagesShowPattern">
+            <summary>
+            The pattern for the images to be used in show.
+            The default is .* to match any string.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.Width">
+            <summary>
+            width of the show container
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.Height">
+            <summary>
+            height of the show container
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ManualChanger">
+            <summary>
+            if true, manual changer exists
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.ComponentVersion">
+            <summary>
+            Component Version - readonly
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Show.SelectedPanel">
+            <summary>
+            selected panel
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.Type">
+            <summary>
+            changer type
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.ArrowType">
+            <summary>
+            position of the arrows reported to the numbers
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.Position">
+            <summary>
+            position of the panels changer
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.VerticalAlign">
+            <summary>
+            vertical aligning of the changer content
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.HorizontalAlign">
+            <summary>
+            horizontal aligning of the changer content
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.AllowAbsolutePosition">
+            <summary>
+            If true, changer can be positioned at absolute position using css.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.Width">
+            <summary>
+            width of the show panels changer
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.Height">
+            <summary>
+            height of the show panels changer
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.MoveLeftTitle">
+            <summary>
+            Title of the MoveLeft image.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.MoveRightTitle">
+            <summary>
+            Title of the MoveRight image.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.PauseTitle">
+            <summary>
+            Title of the Pause image.
+            </summary>
+        </member>
+        <member name="P:OboutInc.Show.Changer.StartTitle">
+            <summary>
+            Title of the Start image.
+            </summary>
+        </member>
+        <member name="T:OboutInc.Show.ShowType">
+            defines the panels show type:
+            show
+            manual
+            
+        </member>
+        <member name="T:OboutInc.Show.TransitionType">
+            defines the panels transition type 
+            None - no transition available
+            Fading - fading effect
+            Scroll - scroll effect
+            
+        </member>
+        <member name="T:OboutInc.Show.ScrollDirection">
+            defines the direction where the panel are going on Scroll transition effect
+            Left - goes to the left
+            Right - goes to the right
+            Top - goes up
+            Bottom - goes down
+            
+        </member>
+        <member name="T:OboutInc.Show.ChangerType">
+            defines the changer of the panels type:
+            arrow - left and right arrow for changing the styles forward and backwards
+            number - numeric panel like datagrid type for changing the panels
+            
+        </member>
+        <member name="T:OboutInc.Show.ArrowType">
+            defines the arrows position when used together with numbers
+            Side1 - on the left/top side of the numbers
+            Side2 - on the right/bottom side of the numbers
+            BothSides - one arrow on the left/top and another one on the right/bottom
+            
+        </member>
+        <member name="T:OboutInc.Show.ChangerPosition">
+            defines the changer position types
+            top - on top of the panels
+            bottom - on bottom of the panels
+            left - the left side of the panels
+            right - the right side of the panels
+            
+        </member>
+        <member name="T:OboutInc.Show.ChangerVerticalAlign">
+            defines the changer vertical align into the changer container
+            
+        </member>
+        <member name="T:OboutInc.Show.ChangerHorizontalAlign">
+            defines the changer horizontal align into the changer container
+            
+        </member>
+        <member name="T:OboutInc.Show.ImagesType">
+            image file extensions supported by the images loader
+            
+        </member>
+        <member name="T:OboutInc.Show.PanelType">
+            panel type: panel, image
+            
+        </member>
+    </members>
+</doc>
