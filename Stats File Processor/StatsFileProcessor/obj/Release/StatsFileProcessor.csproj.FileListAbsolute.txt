@@ -30,3 +30,10 @@ F:\Source\Source Code\Stats File Handler\StatsFileProcessor\obj\Release\StatsFil
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\bin\Release\StatsFileProcessor.exe.config
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\obj\Release\StatsFileProcessor.exe
 D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\obj\Release\StatsFileProcessor.pdb
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\bin\Release\StatsFileProcessor.exe.manifest
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\bin\Release\StatsFileProcessor.application
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\bin\Release\StatsFileProcessor.exe
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\bin\Release\StatsFileProcessor.pdb
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\obj\Release\StatsFileProcessor.exe.manifest
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\obj\Release\StatsFileProcessor.application
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Stats File Processor\StatsFileProcessor\obj\Release\StatsFileProcessor.csprojResolveAssemblyReference.cache

@@ -9,7 +9,7 @@ using System.Globalization;
 public class AppsDBManager
 {
     string sourceFile = "";
-    static string connectionString = "Data Source=KOMAL-HP;Initial Catalog=BUAntivirusStats;Integrated Security=True";
+    static string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Persist Security Info=True;User ID=sa;Password=P@$$w0rd";
     SqlDataAdapter da;
     static SqlConnection con;
     String data;
@@ -86,7 +86,7 @@ public class AppsDBManager
             da.InsertCommand.Parameters.AddWithValue("@packageName", packageName);
             da.InsertCommand.Parameters.AddWithValue("@versionName", "Not available");
             da.InsertCommand.Parameters.AddWithValue("@versionNumber", "Not available");
-            
+            da.InsertCommand.CommandTimeout = 300;
             con.Open();
             da.InsertCommand.ExecuteNonQuery();
             con.Close();
@@ -137,7 +137,7 @@ public class AppsDBManager
                              End";
 
             da.InsertCommand = new SqlCommand(query, con);
-
+            da.InsertCommand.CommandTimeout = 300;
          /*   IFormatProvider culture = new CultureInfo("en-US", false);
             DateTime dateVal = DateTime.ParseExact(tempData[LAST_UPDATE], "dd MM yyyy HH:mm:ss.fff", culture);
             Logger.writeLog("Last update time " + dateVal.ToString());*/
@@ -184,7 +184,7 @@ public class AppsDBManager
         SqlCommand cmd = new SqlCommand(query, con);
         cmd.Parameters.AddWithValue("@deviceId", deviceId);
         cmd.Parameters.AddWithValue("@packageName",tempData[PACKAGE_NAME]);
-
+        cmd.CommandTimeout = 300;
 
         SqlDataReader dr;
         try
@@ -248,7 +248,7 @@ public class AppsDBManager
         {
             con.Open();
             da.UpdateCommand.ExecuteNonQuery();
-
+            da.UpdateCommand.CommandTimeout = 300;
             con.Close();
 
             Logger.writeLog("Updated Successfully. Package Name: " + tempData[PACKAGE_NAME]);
@@ -271,7 +271,7 @@ public class AppsDBManager
 
         da.InsertCommand = new SqlCommand(query, con);
         da.InsertCommand.Parameters.AddWithValue("@device_mac", deviceMac);
-
+        da.InsertCommand.CommandTimeout = 300;
         try
         {
             con.Open();
@@ -296,6 +296,7 @@ public class AppsDBManager
         String query = "select device_id from device where device_mac = '" + mac + "';";
         SqlDataReader dr;
         SqlCommand cmd = new SqlCommand(query, con);
+        cmd.CommandTimeout = 300;
         try
         {
             con.Open();

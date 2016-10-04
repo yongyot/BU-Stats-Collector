@@ -9,7 +9,7 @@ using System.Web;
 /// </summary>
 public class FileDBManager
 {
-    string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Integrated Security=True";
+    string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Persist Security Info=True;User ID=sa;Password=P@$$w0rd";
     SqlDataAdapter da;
     SqlConnection con;
 
@@ -30,6 +30,7 @@ public class FileDBManager
             da.InsertCommand = new SqlCommand(query, con);
             da.InsertCommand.Parameters.AddWithValue("@file_name", fileName);
             da.InsertCommand.Parameters.AddWithValue("@is_processed", false);
+            da.InsertCommand.CommandTimeout = 300;
             con.Open();
             da.InsertCommand.ExecuteNonQuery();
             con.Close();
@@ -52,6 +53,7 @@ public class FileDBManager
         con.Open();
         SqlCommand comm = new SqlCommand(query, con);
         comm.Parameters.AddWithValue("@is_processed", false);
+        comm.CommandTimeout = 300;
         dr = comm.ExecuteReader();
 
         while (dr.Read())
@@ -73,6 +75,7 @@ public class FileDBManager
         try
         {
             da.UpdateCommand = new SqlCommand(query, con);
+            da.UpdateCommand.CommandTimeout = 300;
             da.UpdateCommand.Parameters.AddWithValue("@file_name", fileName);
             con.Open();
             da.UpdateCommand.ExecuteNonQuery();

@@ -17,22 +17,22 @@ public class Logger
     }
     public static void writeLog(string message)
     {
-        string Name = @"F:\\BU-Antivirus 3.0\\Logs\DBLog.txt";
-        string data = DateTime.Now.ToString() + "\t" + message + "\n";
+        string Name = @"E:\\BU-Antivirus 3.0\\Logs\DBLog.txt";
+        string data = DateTime.Now.ToString() + "\t" + message + "\n" + Environment.NewLine;
         File.AppendAllText(Name, data);
     }
 
     public static void writeLine()
     {
-        string Name = "F:\\BU-Antivirus 3.0\\Logs\\DBLog.txt";
-        string data = "------****------****------****------****------****------****\n\n";
+        string Name = "E:\\BU-Antivirus 3.0\\Logs\\DBLog.txt";
+        string data = "------****------****------****------****------****------****\n\n" + Environment.NewLine;
         File.AppendAllText(Name, data);
     }
 
     public static void writeError(string message)
     {
-        string Name = "F:\\BU-Antivirus 3.0\\StatsUploadDatabase\\ClientErros.txt";
-        string data = DateTime.Now.ToString() + "\t" + message + "\n";
+        string Name = "E:\\BU-Antivirus 3.0\\StatsUploadDatabase\\ClientErros.txt";
+        string data = DateTime.Now.ToString() + "\t" + message + "\n" + Environment.NewLine;
         File.AppendAllText(Name, data);
 
     }

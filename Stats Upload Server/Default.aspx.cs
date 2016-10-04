@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 public partial class _Default : System.Web.UI.Page
 {
-    string base_path = "F:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
+    string base_path = "E:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
     protected void Page_Load(object sender, EventArgs e)
     {
         handleFile();
@@ -71,7 +71,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void SaveZipFile(byte[] Data, String fileName)
     {
-        string Name = "F:\\BU-Antivirus 3.0\\StatsUploadDatabase\\" + fileName;
+        string Name = "E:\\BU-Antivirus 3.0\\StatsUploadDatabase\\" + fileName;
         File.WriteAllBytes(Name, Data);
     }
 

@@ -11,14 +11,14 @@ namespace StatsDataOptimizer
     {
         public static void writeLog(string message)
         {
-            string path = @"F:\BU-Antivirus 3.0\Logs\Optimize Logs.txt";            
-            File.AppendAllText(path,DateTime.Now.ToString() + "\t" + message+"\n");
+            string path = @"E:\BU-Antivirus 3.0\Logs\Optimize Logs.txt";
+            File.AppendAllText(path, DateTime.Now.ToString() + "\t" + message + "\n" + Environment.NewLine);
         }
 
         public static void writeLine()
         {
-            string Name = @"F:\BU-Antivirus 3.0\Logs\Optimize Logs.txt";
-            string data = "------****------****------****------****------****------****\n\n";
+            string Name = @"E:\BU-Antivirus 3.0\Logs\Optimize Logs.txt";
+            string data = "------****------****------****------****------****------****\n\n" + Environment.NewLine;
             File.AppendAllText(Name, data);
         }
 

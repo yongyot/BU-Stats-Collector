@@ -12,7 +12,7 @@ using System.Text;
 using System.Diagnostics;
 public partial class hash : System.Web.UI.Page
 {
-    string base_path = "F:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
+    string base_path = "E:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
     protected void Page_Load(object sender, EventArgs e)
     {
         handleFile();

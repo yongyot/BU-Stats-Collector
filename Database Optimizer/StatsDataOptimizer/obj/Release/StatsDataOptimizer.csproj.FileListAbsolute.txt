@@ -8,3 +8,12 @@ F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDat
 F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.pdb
 F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe
 F:\Source\Source Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.pdb
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe.config
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe.manifest
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.application
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.exe
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\bin\Release\StatsDataOptimizer.pdb
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.exe.manifest
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.application
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.exe
+D:\Project\BOY\Freelance\BU-Anti Collection\Code\Database Optimizer\StatsDataOptimizer\obj\Release\StatsDataOptimizer.pdb

@@ -10,7 +10,7 @@ namespace StatsDataOptimizer
     class DBManager
     {
         private SqlConnection con;
-        public static string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Integrated Security=True";
+        public static string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Persist Security Info=True;User ID=sa;Password=P@$$w0rd";
 
 
         public DBManager()
@@ -95,6 +95,7 @@ namespace StatsDataOptimizer
 
             con.Open();
             SqlCommand command = new SqlCommand(queries.ToString(), con);
+            command.CommandTimeout = 300;
             int affected = command.ExecuteNonQuery();
             con.Close();
             return affected;
@@ -115,6 +116,7 @@ namespace StatsDataOptimizer
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(query.ToString(), con);
+                command.CommandTimeout = 300;
                 affected = command.ExecuteNonQuery();
                 con.Close();
             }
@@ -131,6 +133,7 @@ namespace StatsDataOptimizer
             string query = "select * from stats where application_id=@application_id and is_main_process=@is_main_process order by logtime";
             con.Open();
             SqlCommand command = new SqlCommand(query, con);
+            command.CommandTimeout = 300;
             command.Parameters.AddWithValue("application_id", applicationId);//8444
             command.Parameters.AddWithValue("is_main_process", isMainProcess);
 
@@ -140,7 +143,7 @@ namespace StatsDataOptimizer
             try
             {
                 SqlDataReader dr = command.ExecuteReader();
-
+              
                 StatsModel baseRecord = new StatsModel();
                 StatsModel currentRecord = new StatsModel();
 

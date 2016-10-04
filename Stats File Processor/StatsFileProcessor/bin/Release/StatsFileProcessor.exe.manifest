@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StatsFileProcessor.exe" size="25600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StatsFileProcessor.exe" size="26112">
       <assemblyIdentity name="StatsFileProcessor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nSm6KZ8NHITMvtGK/18p5pjDxzuxyXuuTQV01AObUk4=</dsig:DigestValue>
+        <dsig:DigestValue>iLjOc1Bx2tmwcury+B4fsRgHo9Ow9aWzn7F5HuyCpM4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -139,7 +139,7 @@ public class DBManager
 
         string[] data = line.Split('|');
 
-        if (data.Length != 20)
+        if (data.Length != 21)
         {
             Logger.writeLog("Invalid format of stats file.");
             return -1;  //invalid file foramat error.

@@ -9,7 +9,7 @@ using System.Web;
 /// </summary>
 public class FileDBManager
 {
-    string connectionString = "Data Source=KOMAL-HP;Initial Catalog=BUAntivirusStats;Integrated Security=True";
+    string connectionString = "Data Source=BU-MIT-HP;Initial Catalog=BUAntivirusStats;Persist Security Info=True;User ID=sa;Password=P@$$w0rd";
     SqlDataAdapter da;
     SqlConnection con;
 
