@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\yongyot\Documents\Visual Studio 2013\WebSites\BU-DataCollector\App_Code\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Project\BOY\Freelance\BU-Anti Collection\Code\Web Register Test\App_Code\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

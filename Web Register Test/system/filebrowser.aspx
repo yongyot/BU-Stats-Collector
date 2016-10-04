@@ -21,7 +21,7 @@
     void Page_Load(object sender, EventArgs e)
     {
 
-        DefaultFolder = "F:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
+        DefaultFolder = "E:\\BU-Antivirus 3.0\\StatsUploadDatabase\\";
        // DefaultFolder = Server.MapPath("resources/FileBrowser/");
 
         ThrowExceptionsAtClient = false;

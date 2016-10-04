@@ -90,7 +90,7 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                       <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="index.html">เงื่อนไข</a>
                             </li>
@@ -135,7 +135,11 @@
                         </div>
                         <hr>
                         <div class="post-preview">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
+                                <h3>การทดสอบครั้งที่ 1 เสร็จสิ้น โปรดติดตามการเปิดรับสมัครครั้งต่อไปที่ เข้าร่วมกลุ่มทาง Facebook <a href="https://www.facebook.com/groups/679959125489930" target="_blank">>>>BU-Stats Collector<<<</a></h3>
+                            </div>
+                            <div class="col-lg-8" style="display: none">
+
                                 <p>
 
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -221,7 +225,7 @@
                                     </asp:UpdatePanel>
                                 </p>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-4" style="display: none">
                                 <img class="img-responsive" src="img/other/app_home.jpg" alt="">
                             </div>
                         </div>
