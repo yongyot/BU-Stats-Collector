@@ -31,6 +31,8 @@ import th.ac.bu.science.mit.allappstatscollector.Utils.SharePrefs;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static TextView message;
+
     private static String TAG = "MainActivity";
     private static Context mContext;
     private final Handler mHandler = new Handler();
@@ -55,6 +57,9 @@ public class MainActivity extends ActionBarActivity {
         tvWarning = (TextView)findViewById(R.id.tvWarning);
         tvWarningText = (TextView)findViewById(R.id.tvWarningText);
         tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
+
+        message = (TextView)findViewById(R.id.messageListTxt);
+        message.setTextSize(20);
     }
 
     @Override

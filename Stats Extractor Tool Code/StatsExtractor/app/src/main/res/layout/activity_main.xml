@@ -135,6 +135,26 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Outgoing SMS"
+                android:id="@+id/TitleTxt"
+                android:layout_below="@+id/tvLastTime"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Most Recent Message"
+                android:id="@+id/messageListTxt"
+                android:layout_below="@+id/TitleTxt"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
