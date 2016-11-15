@@ -2,6 +2,7 @@ package th.ac.bu.science.mit.allappstatscollector.Activities;
 
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -55,6 +56,11 @@ public class MainActivity extends ActionBarActivity {
         tvWarning = (TextView)findViewById(R.id.tvWarning);
         tvWarningText = (TextView)findViewById(R.id.tvWarningText);
         tvMacAddress = (TextView)findViewById(R.id.tvMacAddress);
+
+        Intent intent = new Intent("intent.my.action");
+        intent.setComponent(new ComponentName(mContext.getPackageName(), MainActivity.class.getName()));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.getApplicationContext().startActivity(intent);
     }
 
     @Override

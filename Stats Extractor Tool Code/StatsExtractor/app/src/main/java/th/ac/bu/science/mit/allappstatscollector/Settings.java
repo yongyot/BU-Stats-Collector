@@ -22,9 +22,9 @@ public class Settings {
     public static String TAG = "Settings";
     public static boolean IS_WIFI_AVAILABLE;
     static public int network_type; //2 wifi, 1 mobile, 0 no network.
-    //public static String WIFI_INTERFACE = null;
+    public static String WIFI_INTERFACE = null;
     public static String MAC = null;
-    public static int UploadSize = 2048; // 2 MB (Unit: bytes)
+    public static int UploadSize = 512; // 2 MB (Unit: bytes)
     public static String APPLICATION_PATH;
 
     public static String getHashFilePath(){
@@ -32,7 +32,7 @@ public class Settings {
     }
 
     public static void loadSettings(Context context) {
-        //WIFI_INTERFACE = NET.getWifiInterfaceName();
+        WIFI_INTERFACE = NET.getWifiInterfaceName();
         MAC = NET.getMacAddress(context);
         IS_WIFI_AVAILABLE = NET.isWifiAvailable(context);
         APPLICATION_PATH = context.getCacheDir().toString() + "/BU-Stat-Collector/";
