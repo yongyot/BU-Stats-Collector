@@ -1,6 +1,5 @@
 package th.ac.bu.science.mit.allappstatscollector.Managers;
 
-
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -61,6 +60,7 @@ public class VirusTotalManager extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         GetAllHashReport();
+
         while (isRunning)  {
             switch (state) {
                 case Idle:
@@ -223,8 +223,6 @@ public class VirusTotalManager extends AsyncTask<String, String, String> {
                     ModelVirusTotalReport report = response.body().get(index);
                     logMessage += "\n" + report.toString();
                 }
-
-                Log.w ("myInfo", logMessage);
 
                 currentApk++;
                 if (currentApk < apkList.size()) {

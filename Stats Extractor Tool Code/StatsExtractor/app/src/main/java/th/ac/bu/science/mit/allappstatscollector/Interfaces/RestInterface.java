@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public interface RestInterface {
     public static final Retrofit api = new Retrofit.Builder()
-            .baseUrl("http://210.86.135.102:8080/")
+            .baseUrl("http://mobile-monitoring.bu.ac.th/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

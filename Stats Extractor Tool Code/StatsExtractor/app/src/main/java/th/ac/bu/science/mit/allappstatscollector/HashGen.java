@@ -74,7 +74,7 @@ public class HashGen {
     }
 
 
-    public AppsInfo getPackageInfo(String packageName,Context context) {
+    public static AppsInfo getPackageInfo(String packageName,Context context) {
         AppsInfo appInfo = new AppsInfo();
 
         PackageManager pm = context.getPackageManager();
@@ -95,7 +95,7 @@ public class HashGen {
     }
 
 
-    private String getHash(String file) {
+    private static String getHash(String file) {
         try {
             FileInputStream inputStream = new FileInputStream(file);
             MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -116,7 +116,7 @@ public class HashGen {
         return null;
     }
 
-    private  String convertByteArrayToHexString(byte[] arrayBytes) {
+    private static String convertByteArrayToHexString(byte[] arrayBytes) {
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < arrayBytes.length; i++) {
             stringBuffer.append(Integer.toString((arrayBytes[i] & 0xff) + 0x100, 16)

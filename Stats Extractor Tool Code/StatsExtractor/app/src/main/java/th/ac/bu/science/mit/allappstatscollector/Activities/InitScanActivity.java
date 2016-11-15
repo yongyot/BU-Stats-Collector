@@ -15,9 +15,11 @@ import th.ac.bu.science.mit.allappstatscollector.Models.AppsInfo;
 import th.ac.bu.science.mit.allappstatscollector.R;
 
 public class InitScanActivity extends GeneralActivity {
+
     VirusTotalManager.ResponseListener listener = new VirusTotalManager.ResponseListener() {
         @Override
         public void OnGetReportProgress (String message, int progress) {
+            Log.w ("myInfo", "OnGetReportProgress " + progress);
             TextView textProgress = (TextView) findViewById(R.id.textProgress);
             textProgress.setText(message);
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -26,6 +28,7 @@ public class InitScanActivity extends GeneralActivity {
 
         @Override
         public void OnGetReportFinished (boolean isSuccessed, List<AppsInfo> appList, String reason) {
+            Log.w ("myInfo", "OnGetReportFinished");
             if (isSuccessed) {
                 for (AppsInfo app : appList) {
                     Log.w("myInfo", "response : " + app.packageName + " : " + app.hash );
