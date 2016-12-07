@@ -72,7 +72,7 @@ public class StatsFileManager {
     }
 
     public static long getFileSize(Context context) {
-        long size = 0;
+        long size;
         try {
             File statsDir;
             statsDir = new File(Settings.APPLICATION_PATH);
