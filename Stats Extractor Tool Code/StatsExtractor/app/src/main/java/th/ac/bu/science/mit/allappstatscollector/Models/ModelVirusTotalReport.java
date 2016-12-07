@@ -4,7 +4,8 @@ public class ModelVirusTotalReport {
     String resource;
     int response_code;
     String detection_ratio;
-    String verbose_message;
+    String detection_percentage;
+    String verbose_msg;
 
     public String Hash() {
         return resource;
@@ -19,6 +20,6 @@ public class ModelVirusTotalReport {
 
     @Override
     public String toString() {
-        return resource + " : " + response_code + " (" + verbose_message + ")";
+        return resource + " : " + response_code + " (" + verbose_msg + ")";
     }
 }

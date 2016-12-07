@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.util.Log;
 
 import java.io.File;
@@ -113,6 +114,7 @@ public class VirusTotalManager extends AsyncTask<String, String, String> {
                 AppsInfo app = HashGen.getPackageInfo(appInfo.packageName, context);
                 appList.add(app);
                 hashList.add(app.hash);
+                publishProgress("hashcode : " + app.hash);
             }
         }
         state = State.SendHash;
@@ -126,9 +128,11 @@ public class VirusTotalManager extends AsyncTask<String, String, String> {
         call.enqueue(new Callback<List<ModelVirusTotalReport>>() {
             @Override
             public void onResponse(Call<List<ModelVirusTotalReport>> call, Response<List<ModelVirusTotalReport>> response) {
+                Log.w ("myInfo","API Responsed : " + response.body().toString());
                 for (int index=0; index < response.body().size(); index++) {
                     ModelVirusTotalReport report = response.body().get(index);
 
+                    Log.w ("myInfo","Loop : " + index + " : " + report.toString());
                     int appIndex = GetIndexOfHash(report.Hash());
                     if (appIndex > -1) {
                         AppsInfo app = appList.get(appIndex);

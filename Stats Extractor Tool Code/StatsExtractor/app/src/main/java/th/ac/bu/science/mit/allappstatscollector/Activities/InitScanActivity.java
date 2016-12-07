@@ -19,7 +19,7 @@ public class InitScanActivity extends GeneralActivity {
     VirusTotalManager.ResponseListener listener = new VirusTotalManager.ResponseListener() {
         @Override
         public void OnGetReportProgress (String message, int progress) {
-            Log.w ("myInfo", "OnGetReportProgress " + progress);
+            Log.w ("myInfo", "OnGetReportProgress " + message + progress);
             TextView textProgress = (TextView) findViewById(R.id.textProgress);
             textProgress.setText(message);
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
